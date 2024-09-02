@@ -1,0 +1,22 @@
+*.pyc
+__pycache__/
+venv/
+*.pyo
+*.pyd
+*.pyi
+*.pyz
+*.pyw
+*.pyz/
+*.pyw/
+*.egg-info/
+dist/
+build/
+pip-log.txt
+pip-log.txt/
+htmlcov/
+.coverage
+# pytest caches
+.pytest_cache/
+pdoc/
+# ruff caches
+.ruff_cache/
