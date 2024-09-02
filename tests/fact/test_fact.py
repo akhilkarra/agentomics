@@ -1,4 +1,5 @@
 import pytest
+
 from fact.lib import InvalidFactorialError, factorial
 
 

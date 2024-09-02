@@ -1,8 +1,8 @@
 .PHONY: env tests lock-conda clean tests docs data
 .DEFAULT_GOAL := tests
 # If CONDA variable is not defined, create it
-CONDA?=${CONDA_PREFIX_1}
-env_name = ai-ml-template
+CONDA?=${CONDA_PREFIX}
+env_name = langroid-econ-sim
 python_version = 3.11.5
 
 env:
