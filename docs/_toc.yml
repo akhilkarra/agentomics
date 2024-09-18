@@ -4,9 +4,6 @@
 format: jb-book
 root: intro.md
 parts:
-  - caption: Overview
-    chapters:
-      - file: intro.md
   - caption: Methods
     chapters:
       - file: scenarios/proposal_main.md
