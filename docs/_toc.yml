@@ -7,6 +7,8 @@ parts:
   - caption: Methods
     chapters:
       - file: scenarios/proposal_main.md
+        sections:
+          - file: scenarios/banks/central_commercial_banks.md
   - caption: Results
     chapters:
       - file: results/results.md
