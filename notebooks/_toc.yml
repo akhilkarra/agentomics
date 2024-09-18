@@ -4,15 +4,13 @@
 format: jb-book
 root: intro
 parts:
-  - caption: Course 1
+  - caption: Picking Scenarios to Simulate
     chapters:
-    - file: course1/chapter1/main.md
-    - file: course1/chapter2/main.ipynb
+    - file: scenarios/proposal_main.md
       sections:
-      - file: course1/chapter2/section1.md
-  - caption: Course 2
+        - file: scenarios/banks/central_commercial_banks.md
+  - caption: Progress Tracking
     chapters:
-    - file: course2/chapter1/main.md
-    - file: course2/chapter2/main.ipynb
-      sections:
-      - file: course2/chapter2/section1.md
+      - file: progress/meeting_notes.md
+        sections:
+          - file: progress/meetings/20240919.md
