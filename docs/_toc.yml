@@ -1,0 +1,18 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro.md
+parts:
+  - caption: Overview
+    chapters:
+      - file: intro.md
+  - caption: Methods
+    chapters:
+      - file: scenarios/proposal_main.md
+  - caption: Results
+    chapters:
+      - file: results/results.md
+  - caption: Conclusions
+    chapters:
+      - file: conclusions.md
