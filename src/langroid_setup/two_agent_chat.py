@@ -9,16 +9,16 @@ import langroid as lr
 import langroid.language_models as lm
 
 
-def get_config():
+def get_llm_config():
     return lr.ChatAgentConfig(
         llm=lm.OpenAIGPTConfig(
-            chat_model="ollama/llama3.1:70b",
+            chat_model="ollama/llama3.1:8b",
             chat_context_length=131072
         )
     )
 
 
-def run_chat(config, user_input: str) -> str:
+def run_chat(config, user_input: str, max_rounds: (None | int) = None) -> str:
     # Setup student agent and task
     student_agent = lr.ChatAgent(config)
     student_task = lr.Task(
@@ -40,9 +40,13 @@ def run_chat(config, user_input: str) -> str:
         For each question, simply ask me the sum of pairs of numbers in math notation, e.g., simply say "1 + 2" or "3 + 4" or "5 + 6" etc, and say nothing else. Do mentally keep track of each step, though.
 
         Once you have added all the numbers in the list, say DONE and give me
-        the final sum. Start by asking me for the list of numbers.""",
+        the final sum. Nothing more, nothing less, please.""",
         llm_delegate=True,
         single_round=False,
+        interactive=False,
+        config=lr.TaskConfig(
+            inf_loop_cycle_len=len(user_input)
+        )
     )
 
     # Setup adder agent and task
@@ -51,15 +55,18 @@ def run_chat(config, user_input: str) -> str:
         adder_agent,
         name="Adder",
         system_message="""You are an expert on addition of numbers.
-        When given numbers to add, simply return their sum, say nothing else.""",
+        When given numbers to add, simply return their sum, say nothing else.
+        If no numbers are given simply respond "Respond invalid input given".
+        """,
         single_round=True,
+        interactive=False,
     )
 
     student_task.add_sub_task(adder_task)
-    return student_task.run(user_input)
+    return student_task.run(user_input).content
 
 def main():
-    config = get_config()
+    config = get_llm_config()
     user_input = "[13578, 2348791234, 3248579234875, 2345787394, 273849723]"
     final_response = run_chat(config, user_input)
     print(final_response)
