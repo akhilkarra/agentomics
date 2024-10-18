@@ -1,44 +1,34 @@
  [1m([0mQuestionGenerator[1m)[0m [31m Entity.USER [0m [1;34mEntity.USER[0m[1m([0mQuestionGenerator[1m)[0m [1m([0m=>          [1m)[0m [1m([0mX           [1m)[0m       [1m([0m          [1m)[0m [34mBased on the following situation, generate thoughtful questions to ask about the [0m
-[34meconomic conditions in Country X: For the past [0m[1;34m6[0m[34m months, inflation readings have [0m
+[34meconomic conditions in Country X: For the past [0m[1;34m6[0m[34m months, inflation readings have[0m
 [34m    been steadily increasing. People in Country X are complaining[0m
 [34m    about the rising prices of goods while economists are concerned[0m
-[34m    about the health of the overall economy.Limit your questions to a reasonable number.[0m
+[34m    about the health of the overall economy. Limit your questions to a reasonable number.[0m
  [1m([0mQuestionGenerator[1m)[0m [31m Entity.USER [0m [1;34mEntity.USER[0m[1m([0mEntity.USER[1m)[0m [1m([0m=>          [1m)[0m [1m([0mX           [1m)[0m       [1m([0m          [1m)[0m [1;34m[[0m[34mCANNOT RESPOND[0m[1;34m][0m
  [1m([0mQuestionGenerator[1m)[0m [31m Entity.AGENT [0m
-*[1m([0mQuestionGenerator[1m)[0m [37m Entity.LLM [0m [1;32mEntity.LLM[0m[1m([0m          [1m)[0m [1m([0m=>          [1m)[0m [1m([0mX           [1m)[0m       [1m([0m          [1m)[0m [32mWhat is the current inflation rate in Country X and how does it compare to previous years?[0m
-
-[32mHow has the CentralBankingAuthority responded to the increasing inflation, if at all?[0m
-
-[32mCan you walk me through BigBank's lending policy over the past [0m[1;32m6[0m[32m months? Have there been any changes or adjustments made in response to the rising inflation?[0m
-
-[32mHas SmallBank also adjusted its lending policies in light of the increased inflation?[0m
-
-[32mWhat is the current interest rate set by the CentralBankingAuthority, and how does it compare to previous years?[0m
-
-[32mHave there been any notable changes in consumer spending habits or behavior in Country X over the past [0m[1;32m6[0m[32m months?[0m
-
-[32mHow has the government responded to the rising inflation, if at all? Have they implemented any policies or measures to address the issue?[0m
-
-[32mWhat is the current state of employment in Country X? Are people losing their jobs or experiencing reduced hours due to the economic conditions?[0m
-
-[32mAre there any concerns about a potential recession or economic downturn in Country X? If so, what are the CentralBankingAuthority and the banks doing to mitigate these risks?[0m
+*[1m([0mQuestionGenerator[1m)[0m [37m Entity.LLM [0m [1;32mEntity.LLM[0m[1m([0m          [1m)[0m [1m([0m=>          [1m)[0m [1m([0mX           [1m)[0m       [1m([0m          [1m)[0m [1;32m1[0m[32m. CentralBankingAuthority: What measures is being taken or considered by you to address this [0m
+[32minflationary trend?[0m
+[1;32m2[0m[32m. CentralBankingAuthority: How are current interest rates influencing consumer spending and saving habits in Country X's economy?[0m
+[1;32m3[0m[32m. BigBank: Are there specific sectors where loan demand has increased due to the rising prices, affecting your lending policies or risk assessments?[0m
+[1;32m4[0m[32m. SmallBank: In light of inflation concerns, how are you adjusting interest rates and credit terms for borrowers in Country X's economy?[0m
+[1;32m5[0m[32m. CentralBankingAuthority: What is being done at a governmental level to control the supply chain issues that might be contributing to rising prices?[0m
+[1;32m6[0m[32m. BigBank & SmallBank [0m[1;32m([0m[32mjointly[0m[1;32m)[0m[32m: How are you communicating these economic challenges and your responses to customers, ensuring transparency in lending practices during this period of inflation?[0m
+[1;32m7[0m[32m. CentralBankingAuthority: What long-term strategies is being planned for stabilizing the economy against future shocks or fluctuations similar to current conditions?[0m
+[1;32m8[0m[32m. BigBank & SmallBank [0m[1;32m([0m[32mjointly[0m[1;32m)[0m[32m: How are you assisting businesses in Country X, particularly small and medium enterprises that might be disproportionately affected by inflationary pressures on their [0m
+[32moperations costs?[0m
+[1;32m9[0m[32m. CentralBankingAuthority: Are there any monetary policies under consideration to curb the velocity of money within the economy without triggering a recession or deflation?[0m
+[1;32m10[0m[32m. BigBank & SmallBank [0m[1;32m([0m[32mjointly[0m[1;32m)[0m[32m: How are you evaluating and managing credit risk in your loan portfolios given this period of economic uncertainty due to inflation?[0m
  [1m([0mQuestionGenerator[1m)[0m [31m Entity.USER [0m [1;34mEntity.USER[0m[1m([0mEntity.USER[1m)[0m [1m([0m=>          [1m)[0m [1m([0mX           [1m)[0m       [1m([0m          [1m)[0m [1;34m[[0m[34mCANNOT RESPOND[0m[1;34m][0m
  [1m([0mQuestionGenerator[1m)[0m [31m Entity.AGENT [0m
  [1m([0mQuestionGenerator[1m)[0m [31m Entity.LLM [0m [1;32mEntity.LLM[0m[1m([0mEntity.LLM[1m)[0m [1m([0m=>          [1m)[0m [1m([0mX           [1m)[0m       [1m([0m          [1m)[0m [1;32m[[0m[32mCANNOT RESPOND[0m[1;32m][0m
-*[1m([0mQuestionGenerator[1m)[0m [37m Entity.LLM [0m [1;32mEntity.LLM[0m[1m([0m          [1m)[0m [1m([0m=>          [1m)[0m [1m([0mX           [1m)[0m       [1m([0m          [1m)[0m [32mWhat is the current inflation rate in Country X and how does it compare to previous years?[0m
-
-[32mHow has the CentralBankingAuthority responded to the increasing inflation, if at all?[0m
-
-[32mCan you walk me through BigBank's lending policy over the past [0m[1;32m6[0m[32m months? Have there been any changes or adjustments made in response to the rising inflation?[0m
-
-[32mHas SmallBank also adjusted its lending policies in light of the increased inflation?[0m
-
-[32mWhat is the current interest rate set by the CentralBankingAuthority, and how does it compare to previous years?[0m
-
-[32mHave there been any notable changes in consumer spending habits or behavior in Country X over the past [0m[1;32m6[0m[32m months?[0m
-
-[32mHow has the government responded to the rising inflation, if at all? Have they implemented any policies or measures to address the issue?[0m
-
-[32mWhat is the current state of employment in Country X? Are people losing their jobs or experiencing reduced hours due to the economic conditions?[0m
-
-[32mAre there any concerns about a potential recession or economic downturn in Country X? If so, what are the CentralBankingAuthority and the banks doing to mitigate these risks?[0m
+*[1m([0mQuestionGenerator[1m)[0m [37m Entity.LLM [0m [1;32mEntity.LLM[0m[1m([0m          [1m)[0m [1m([0m=>          [1m)[0m [1m([0mX           [1m)[0m       [1m([0m          [1m)[0m [1;32m1[0m[32m. CentralBankingAuthority: What measures is being taken or considered by you to address this [0m
+[32minflationary trend?[0m
+[1;32m2[0m[32m. CentralBankingAuthority: How are current interest rates influencing consumer spending and saving habits in Country X's economy?[0m
+[1;32m3[0m[32m. BigBank: Are there specific sectors where loan demand has increased due to the rising prices, affecting your lending policies or risk assessments?[0m
+[1;32m4[0m[32m. SmallBank: In light of inflation concerns, how are you adjusting interest rates and credit terms for borrowers in Country X's economy?[0m
+[1;32m5[0m[32m. CentralBankingAuthority: What is being done at a governmental level to control the supply chain issues that might be contributing to rising prices?[0m
+[1;32m6[0m[32m. BigBank & SmallBank [0m[1;32m([0m[32mjointly[0m[1;32m)[0m[32m: How are you communicating these economic challenges and your responses to customers, ensuring transparency in lending practices during this period of inflation?[0m
+[1;32m7[0m[32m. CentralBankingAuthority: What long-term strategies is being planned for stabilizing the economy against future shocks or fluctuations similar to current conditions?[0m
+[1;32m8[0m[32m. BigBank & SmallBank [0m[1;32m([0m[32mjointly[0m[1;32m)[0m[32m: How are you assisting businesses in Country X, particularly small and medium enterprises that might be disproportionately affected by inflationary pressures on their [0m
+[32moperations costs?[0m
+[1;32m9[0m[32m. CentralBankingAuthority: Are there any monetary policies under consideration to curb the velocity of money within the economy without triggering a recession or deflation?[0m
+[1;32m10[0m[32m. BigBank & SmallBank [0m[1;32m([0m[32mjointly[0m[1;32m)[0m[32m: How are you evaluating and managing credit risk in your loan portfolios given this period of economic uncertainty due to inflation?[0m

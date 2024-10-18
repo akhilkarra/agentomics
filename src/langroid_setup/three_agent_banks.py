@@ -14,7 +14,7 @@ from langroid.agent.tools.recipient_tool import RecipientTool
 def get_llm_config():
     return lr.ChatAgentConfig(
         llm=lm.OpenAIGPTConfig(
-            chat_model="ollama/llama3.1:8b",
+            chat_model="ollama/phi3.5",
             chat_context_length=131072
         )
     )
@@ -81,9 +81,14 @@ class Orchestrator:
         You will consult directly with CentralBankingAuthority, BigBank, and
         SmallBank to understand what their responses and actions will be. To
         clarify who your question is for, you must use the `recipient_message`
-        tool/function-call. Set the `content` field to the question you want to
-        ask, and the `recipient` field to either CentralBankingAuthority,
-        BigBank, or SmallBank. Do not set any other fields.
+        tool/function-call. Format your JSON request as follows:
+        "
+        TOOL: recipient_message
+        {content: question,
+         recipient: intended_recipient}
+        "
+        where you replace "question" with the question you want to ask and
+        "intended_recipient" with one of CentralBankingAuthority, BigBank, or SmallBank. Do not set any other fields in the JSON request.
 
         Once you have all the information you need, title your summary "DONE" up top and give your summary afterwards.
         """
@@ -170,7 +175,7 @@ def main():
     about the rising prices of goods while economists are concerned
     about the health of the overall economy."""
 
-    questions_prompt = f"Based on the following situation, generate thoughtful questions to ask about the economic conditions in Country X: {situation}Limit your questions to a reasonable number."
+    questions_prompt = f"""Based on the following situation, generate thoughtful questions to ask about the economic conditions in Country X: {situation} Limit your questions to a reasonable number."""
     generated_questions = q_gen.task.run(questions_prompt).content.splitlines()
 
     # Loop through each generated question and get responses
