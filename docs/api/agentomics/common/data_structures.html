@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.1">
+<title>agentomics.common.data_structures API documentation</title>
+<meta name="description" content="Agentomics: Common Data Structures …">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>agentomics.common.data_structures</code></h1>
+</header>
+<section id="section-intro">
+<p>Agentomics: Common Data Structures</p>
+<p>A library of common data structures used in economic simulations
+that ensure type safety and correctness while allowing modularity
+and compatibility with the Langroid multi-agent framework</p>
+<p>Author: Akhil Karra</p>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="agentomics.common.data_structures.BigBankKnobs"><code class="flex name class">
+<span>class <span class="ident">BigBankKnobs</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Data structure within RecurringGlobalState to represent
+key knobs manipulated by the BigBank large commercial bank
+which are known to all agents</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class BigBankKnobs:
+    &#34;&#34;&#34;Data structure within RecurringGlobalState to represent
+    key knobs manipulated by the BigBank large commercial bank
+    which are known to all agents&#34;&#34;&#34;
+    def __init__(self):
+        self.loan_to_deposit_ratio = TypedArray(
+            NonnegPercent,
+            series_name=&#34;Loan to Deposit Ratio (%)&#34;,
+            var_name=&#34;loan_to_deposit_ratio&#34;)
+        self.deposit_interest_rate = TypedArray(
+            NonnegPercent,
+            series_name=&#34;Deposit Interest Rate (%)&#34;,
+            var_name=&#34;deposit_interest_rate&#34;)
+
+    def print_subfields(self):
+        print(&#34;BigBankKnobs Fields:&#34;)
+        for field, field_value in self.__dict__.items():
+            if isinstance(field_value, TypedArray):
+                field_value.print_subfields()
+            else:
+                print(f&#34;{field}: {field_value}&#34;)
+        print()</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="agentomics.common.data_structures.BigBankKnobs.print_subfields"><code class="name flex">
+<span>def <span class="ident">print_subfields</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="agentomics.common.data_structures.CentralBankKnobs"><code class="flex name class">
+<span>class <span class="ident">CentralBankKnobs</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Data structure within RecurringGlobalState to represent
+key knobs manipulated by the CentralBank which are known
+to all agents</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class CentralBankKnobs:
+    &#34;&#34;&#34;Data structure within RecurringGlobalState to represent
+    key knobs manipulated by the CentralBank which are known
+    to all agents&#34;&#34;&#34;
+    def __init__(self):
+        self.target_inflation_rate = Percent(0.02,
+                                             name=&#34;Target Inflation Rate (%)&#34;)
+        self.target_interest_rate = TypedArray(NonnegPercent,
+            series_name=&#34;Target Interest Rate (%)&#34;,
+            var_name=&#34;target_interest_rate&#34;)
+        self.total_securities_holdings = TypedArray(
+            NonnegFloat,
+            series_name=&#34;Total Securities Holdings (CUR)&#34;,
+            var_name=&#34;total_securities_holdings&#34;)
+
+    def print_subfields(self):
+        print(&#34;CentralBankKnobs Fields:&#34;)
+        for field, field_value in self.__dict__.items():
+            if isinstance(field_value, TypedArray):
+                field_value.print_subfields()
+            else:
+                print(f&#34;{field}: {field_value}&#34;)
+        print()</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="agentomics.common.data_structures.CentralBankKnobs.print_subfields"><code class="name flex">
+<span>def <span class="ident">print_subfields</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="agentomics.common.data_structures.EconomicVariables"><code class="flex name class">
+<span>class <span class="ident">EconomicVariables</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Data structure within RecurringGlobalState to represent
+key economic variables shared with all agents</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class EconomicVariables:
+    &#34;&#34;&#34;Data structure within RecurringGlobalState to represent
+    key economic variables shared with all agents&#34;&#34;&#34;
+    def __init__(self):
+        self.gdp_growth_rate = TypedArray(
+            Percent,
+            series_name=&#34;GDP Growth Rate (% Change)&#34;,
+            var_name=&#34;gdp_growth_rate&#34;)
+        self.unemployment_rate = TypedArray(
+            NonnegPercent,
+            series_name=&#34;Unemployment Rate (%)&#34;,
+            var_name=&#34;unemployment_rate&#34;)
+        self.inflation_rate = TypedArray(
+            Percent,
+            series_name=&#34;Inflation Rate (%)&#34;,
+            var_name=&#34;inflation_rate&#34;)
+
+    def print_subfields(self):
+        print(&#34;EconomicVariables Fields:&#34;)
+        for field, field_value in self.__dict__.items():
+            if isinstance(field_value, TypedArray):
+                field_value.print_subfields()
+            else:
+                print(f&#34;{field}: {field_value}&#34;)
+        print()  # Add a new line for better readability</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="agentomics.common.data_structures.EconomicVariables.print_subfields"><code class="name flex">
+<span>def <span class="ident">print_subfields</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="agentomics.common.data_structures.SmallBankKnobs"><code class="flex name class">
+<span>class <span class="ident">SmallBankKnobs</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Data structure within RecurringGlobalstate to represent
+key knobs manipulated by the SmallBank small community bank
+which are known to all agents</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class SmallBankKnobs:
+    &#34;&#34;&#34;Data structure within RecurringGlobalstate to represent
+    key knobs manipulated by the SmallBank small community bank
+    which are known to all agents&#34;&#34;&#34;
+    def __init__(self):
+        self.loans_interest_rate = TypedArray(
+            NonnegPercent,
+            series_name=&#34;Loans Interest Rate (%)&#34;,
+            var_name=&#34;loans_interest_rate&#34;)
+        self.consumer_loan_focus = TypedArray(
+            NonnegPercent,
+            series_name=&#34;Consumer Loan Focus (%)&#34;,
+            var_name=&#34;consumer_loan_focus&#34;)
+
+    def print_subfields(self):
+        print(&#34;SmallBankKnobs Fields:&#34;)
+        for field, field_value in self.__dict__.items():
+            if isinstance(field_value, TypedArray):
+                field_value.print_subfields()
+            else:
+                print(f&#34;{field}: {field_value}&#34;)
+        print()</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="agentomics.common.data_structures.SmallBankKnobs.print_subfields"><code class="name flex">
+<span>def <span class="ident">print_subfields</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="agentomics.common.data_structures.ThreeBankGlobalState"><code class="flex name class">
+<span>class <span class="ident">ThreeBankGlobalState</span></span>
+<span>(</span><span>**data: Any)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Data structure representing key economic variables and
+knobs for the central bank and commercial banks</p>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises ValidationError if the input data cannot be parsed to form a valid model.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ThreeBankGlobalState(GlobalState):
+    &#34;&#34;&#34;Data structure representing key economic variables and
+    knobs for the central bank and commercial banks&#34;&#34;&#34;
+    class Config:
+        arbitrary_types_allowed = True  # Enable arbitrary types
+
+    economic_variables = EconomicVariables()
+    central_bank_knobs = CentralBankKnobs()
+    big_bank_knobs = BigBankKnobs()
+    small_bank_knobs = SmallBankKnobs()
+    number_of_quarters_to_simulate = 1
+
+    def print_subfields(self):
+        print(&#34;RecurringGlobalState Fields:&#34;)
+        print()
+        for field, field_value in self.__dict__.items():
+            if isinstance(field_value, (EconomicVariables, CentralBankKnobs, BigBankKnobs, SmallBankKnobs)):
+                print(f&#34;{field}:&#34;)
+                field_value.print_subfields()  # Call the nested print_subfields method
+            else:
+                print(f&#34;{field}: {field_value}&#34;)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>langroid.utils.globals.GlobalState</li>
+<li>pydantic.v1.main.BaseModel</li>
+<li>pydantic.v1.utils.Representation</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="agentomics.common.data_structures.ThreeBankGlobalState.Config"><code class="name">var <span class="ident">Config</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="agentomics.common.data_structures.ThreeBankGlobalState.print_subfields"><code class="name flex">
+<span>def <span class="ident">print_subfields</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="agentomics.common" href="index.html">agentomics.common</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="agentomics.common.data_structures.BigBankKnobs" href="#agentomics.common.data_structures.BigBankKnobs">BigBankKnobs</a></code></h4>
+<ul class="">
+<li><code><a title="agentomics.common.data_structures.BigBankKnobs.print_subfields" href="#agentomics.common.data_structures.BigBankKnobs.print_subfields">print_subfields</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="agentomics.common.data_structures.CentralBankKnobs" href="#agentomics.common.data_structures.CentralBankKnobs">CentralBankKnobs</a></code></h4>
+<ul class="">
+<li><code><a title="agentomics.common.data_structures.CentralBankKnobs.print_subfields" href="#agentomics.common.data_structures.CentralBankKnobs.print_subfields">print_subfields</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="agentomics.common.data_structures.EconomicVariables" href="#agentomics.common.data_structures.EconomicVariables">EconomicVariables</a></code></h4>
+<ul class="">
+<li><code><a title="agentomics.common.data_structures.EconomicVariables.print_subfields" href="#agentomics.common.data_structures.EconomicVariables.print_subfields">print_subfields</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="agentomics.common.data_structures.SmallBankKnobs" href="#agentomics.common.data_structures.SmallBankKnobs">SmallBankKnobs</a></code></h4>
+<ul class="">
+<li><code><a title="agentomics.common.data_structures.SmallBankKnobs.print_subfields" href="#agentomics.common.data_structures.SmallBankKnobs.print_subfields">print_subfields</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="agentomics.common.data_structures.ThreeBankGlobalState" href="#agentomics.common.data_structures.ThreeBankGlobalState">ThreeBankGlobalState</a></code></h4>
+<ul class="">
+<li><code><a title="agentomics.common.data_structures.ThreeBankGlobalState.Config" href="#agentomics.common.data_structures.ThreeBankGlobalState.Config">Config</a></code></li>
+<li><code><a title="agentomics.common.data_structures.ThreeBankGlobalState.print_subfields" href="#agentomics.common.data_structures.ThreeBankGlobalState.print_subfields">print_subfields</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.1</a>.</p>
+</footer>
+</body>
+</html>

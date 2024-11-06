@@ -4,6 +4,9 @@
 format: jb-book
 root: intro.md
 parts:
+  - caption: API Reference
+    chapters:
+      - file: api.rst
   - caption: Methods
     chapters:
       - file: methods.md

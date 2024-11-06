@@ -2,7 +2,7 @@
 .DEFAULT_GOAL := tests
 # If CONDA variable is not defined, create it
 CONDA?=${CONDA_PREFIX}
-env_name = langroid-econ-sim
+env_name = agentomics
 python_version = 3.11.5
 
 env:
@@ -42,12 +42,12 @@ tests:
 	poetry run pytest
 	@echo "Done!"
 
-docs:
+reference-docs:
 	@echo "Creating documentation..." && \
 	. ${CONDA}/etc/profile.d/conda.sh && \
 	conda activate $(env_name) && \
 	. ${CONDA}/etc/profile.d/conda.sh && \
-	poetry run pdoc src -o pdoc/ --html --force
+	poetry run pdoc agentomics -o docs/api --html --force
 	@echo "Done!"
 
 # . ${CONDA}/etc/profile.d/conda.sh && \
@@ -63,19 +63,19 @@ create-books:
 	@echo "Creating jupyter-book books..."
 	. ${CONDA}/etc/profile.d/conda.sh && \
 	conda activate $(env_name) && \
-	poetry run jupyter-book create notebooks
+	poetry run jupyter-book create docs
 	@echo "Done!"
 
 books:
 	@echo "Building jupyter-book books..."
 	. ${CONDA}/etc/profile.d/conda.sh && \
 	conda activate $(env_name) && \
-	poetry run jupyter-book build notebooks
+	poetry run jupyter-book build docs
 	@echo "Done!"
 
 publish:
 	@echo "Publishing jupyter-book books..."
 	. ${CONDA}/etc/profile.d/conda.sh && \
 	conda activate $(env_name) && \
-	ghp-import -n -p -f notebooks/_build/html
+	ghp-import -n -p -f docs/_build/html
 	@echo "Done!"

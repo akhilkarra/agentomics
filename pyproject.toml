@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "ai-ml-template"
+name = "agentomics"
 version = "0.1.0"
 description = ""
 authors = ["Akhil Karra <akhil.karra@me.com>"]

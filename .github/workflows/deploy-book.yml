@@ -43,10 +43,15 @@ jobs:
         path: _build/.jupyter_cache
         key: jupyter-book-cache-${{ hashFiles('requirements.txt') }}
 
+    # Build the reference docs
+    - name: Build the reference docs
+      run : |
+        make reference-docs
+
     # Build the book
     - name: Build the book
       run: |
-        jupyter-book build docs
+        make books
 
     # Upload the book's HTML as an artifact
     - name: Upload artifact

@@ -20,3 +20,4 @@ htmlcov/
 pdoc/
 # ruff caches
 .ruff_cache/
+logs/
