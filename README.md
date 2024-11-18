@@ -2,15 +2,17 @@
 
 ## Introduction
 
-Welcome to Agentomics! A repository for economic simulations powered by multi-agent LLM systems. This repository contains scripts for some economic simulations and associated custom modules and utilities.
+Welcome to Agentomics! A repository for creating a macroeconomic simulation powered by a multi-agent LLM system.
+
+The specific goal of this simulation is to see how introducing pertubations in different economic metrics could influence the behaviors of central and commercial banks, and how different magnitudes of such pertubations can influence major changes in economic policy and lending behaviors. I aim to achieve this using the information stored in the LLM's weights after training, and in doing so, evaluating how closely the LLM's predictions match different existing case studies to evaluate its validity (even if these are not necessarily out-of-sample evaluations).
+
+This repository contains a script for this economic simulation and associated custom modules and utilities.
 
 ## Repository Setup
 
 To set up the working environment in your workspace, run ``make env``. This will create an Anaconda virtual environment named "agentomics" and will install all the necessary packages using the Poetry package manager. After installation, run ``conda activate agentomics`` to activate the environment.
 
-## Running Experiments
+## Running Experiment
 
-To run any of the experiments, run the following command:
-``python3 -m [path_to_script]``
-where ``[path_to_script]`` is the path to the script you want to run, without the py file extension. For example, to run the script ``economic_simulations/three_banks.py``, you run the command
-``python3 -m economic_simulations/three_banks/py``.
+The main experiment script is stored under ``scripts/economic_simulations/three_banks.py``. To run this experiment, execute the command
+``python3 -m scripts/economic_simulations/three_banks/py`` at the root of the repository.
