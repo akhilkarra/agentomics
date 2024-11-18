@@ -35,10 +35,13 @@ poetry-test:
 poetry: poetry-dev poetry-test
 	poetry add numpy scipy pandas scikit-learn nltk matplotlib
 
+format:
+	@echo "Formatting files..." && \
+	poetry run ruff check --fix
+	@echo "Done!"
+
 tests:
 	@echo "Running tests..." && \
-	. ${CONDA}/etc/profile.d/conda.sh && \
-	conda activate $(env_name) && \
 	poetry run pytest
 	@echo "Done!"
 

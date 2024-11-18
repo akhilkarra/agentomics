@@ -8,13 +8,17 @@ and compatibility with the Langroid multi-agent framework
 
 Author: Akhil Karra
 """
-
+import numpy as np
+import pandas as pd
 from langroid.utils.globals import GlobalState
 
 from agentomics.common.types import NonnegPercent, Percent, TypedArray
 
 
-class EconomicVariables:
+class Knobs:
+    knobs = None
+
+class EconomicVariables(Knobs):
     """Data structure within RecurringGlobalState to represent
     key economic variables shared with all agents"""
     def __init__(self):
@@ -41,7 +45,7 @@ class EconomicVariables:
         return string + "\n"
 
 
-class CentralBankKnobs:
+class CentralBankKnobs(Knobs):
     """Data structure within RecurringGlobalState to represent
     key knobs manipulated by the CentralBank which are known
     to all agents"""
@@ -68,7 +72,7 @@ class CentralBankKnobs:
         return string + "\n"
 
 
-class BigBankKnobs:
+class BigBankKnobs(Knobs):
     """Data structure within RecurringGlobalState to represent
     key knobs manipulated by the BigBank large commercial bank
     which are known to all agents"""
@@ -92,7 +96,7 @@ class BigBankKnobs:
         return string + "\n"
 
 
-class SmallBankKnobs:
+class SmallBankKnobs(Knobs):
     """Data structure within RecurringGlobalstate to represent
     key knobs manipulated by the SmallBank small community bank
     which are known to all agents"""
@@ -138,3 +142,22 @@ class ThreeBankGlobalState(GlobalState):
                 else:
                     string += f"{field}: {field_value}" + "\n"
         return string + "\n"
+
+    def to_pandas_df(self) -> pd.DataFrame:
+        """Take all of the series generated and put them into a Pandas
+        DataFrame as columns"""
+        column_names = []
+        list_of_lists = []
+        for _, field_value in self.__dict__.items():
+            if isinstance(field_value, Knobs):
+                for _, subfield_value in field_value.__dict__.items():
+                    if isinstance(subfield_value, TypedArray):
+                        if subfield_value.var_name is not None:
+                            column_names.append(subfield_value.var_name)
+                        else:
+                            column_names.append("")
+                        list_of_lists.append(
+                            subfield_value.to_list(elementary_types=True)
+                        )
+        array_2d = np.array(list_of_lists).T.tolist()
+        return pd.DataFrame(data=array_2d, columns=column_names)

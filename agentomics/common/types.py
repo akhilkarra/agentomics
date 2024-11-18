@@ -31,8 +31,11 @@ class TypedArray:
         map(self._type_check, L)
         self._array = L
 
-    def to_list(self):
-        return self._array
+    def to_list(self, elementary_types=False):
+        if elementary_types:
+            return [x.to_val() for x in self._array]
+        else:
+            return self._array
 
     def __getitem__(self, index):
         if isinstance(index, slice):
@@ -88,6 +91,9 @@ class NonnegFloat:
     def __repr__(self):
         return repr(self.value)
 
+    def to_val(self):
+        return self.value
+
 
 @dataclass(frozen=True)
 class Percent:
@@ -103,6 +109,9 @@ class Percent:
     def __repr__(self):
         return repr(self.value * 100.0) + "%"
 
+    def to_val(self):
+        return self.value
+
 
 @dataclass(frozen=True)
 class NonnegPercent:
@@ -116,3 +125,6 @@ class NonnegPercent:
 
     def __repr__(self):
         return repr(self.value * 100.0) + "%"
+
+    def to_val(self):
+        return self.value
