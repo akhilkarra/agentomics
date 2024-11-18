@@ -19,6 +19,7 @@ mlx-lm = {version = "^0.18.1", platform = "macos-arm64"}
 sentence-transformers = "^3.0.1"
 ruff = "^0.6.3"
 mypy = "^1.12.0"
+pytest-mock = "^3.14.0"
 
 [tool.poetry.group.dev.dependencies]
 jupyter = "^1.0.0"
