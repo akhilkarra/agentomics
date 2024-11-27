@@ -79,7 +79,7 @@ class TypedArray:
 
 
 @dataclass(frozen=True)
-class NonnegFloat:
+class NonnegFloat(float):
     """Custom nonnegative float datatype to ensure that LLMs return
     reasonable nonnegative values to the recurring global state"""
     value: float
@@ -96,7 +96,7 @@ class NonnegFloat:
 
 
 @dataclass(frozen=True)
-class Percent:
+class Percent(float):
     """Custom percent datatype to ensure that LLMs return reasonable
     percentage values to the recurring global state."""
     value: float
@@ -114,7 +114,7 @@ class Percent:
 
 
 @dataclass(frozen=True)
-class NonnegPercent:
+class NonnegPercent(float):
     """Custom nonnegative percent datatype to ensure that LLMs return reasonable
     percentage values to the recurring global state."""
     value: float

@@ -155,6 +155,8 @@ def main():
     globals_pd = globals.to_pandas_df()
     globals_pd.to_csv(f"output/{OUTPUT_CSV_NAME}.csv")
 
+    print(globals.print_subfields())
+
 
 if __name__ == "__main__":
     main()
