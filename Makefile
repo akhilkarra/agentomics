@@ -42,6 +42,8 @@ format:
 
 tests:
 	@echo "Running tests..." && \
+	. ${CONDA}/etc/profile.d/conda.sh && \
+	conda activate $(env_name) && \
 	poetry run pytest
 	@echo "Done!"
 
