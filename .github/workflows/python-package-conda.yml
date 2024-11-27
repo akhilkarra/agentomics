@@ -22,5 +22,7 @@ jobs:
       run: |
         make env
     - name: Run tests
+      env:
+        GROQ_API_KEY: ${{secrets.GROQ_API_KEY}}
       run: |
         make tests
