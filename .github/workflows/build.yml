@@ -1,4 +1,4 @@
-name: Build Project
+name: Build
 
 on:
   push:
@@ -39,3 +39,9 @@ jobs:
       if: github.event_name == 'pull_request'
       run : |
         make test
+    - name: Upload coverage reports to Codecov
+      if: github.event_name == 'pull_request'
+      uses: codecov/codecov-action@v5
+      with:
+        files: ./coverage.xml
+        token: ${{ secrets.CODECOV_TOKEN }}

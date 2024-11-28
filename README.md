@@ -1,5 +1,11 @@
 # Agentomics
 
+[![Langroid Status](https://img.shields.io/badge/Powered%20by-Langroid-orange)](https://github.com/langroid/langroid)
+[![Build Status](https://github.com/akhilkarra/agentomics/actions/workflows/build.yml/badge.svg)](https://github.com/akhilkarra/agentomics/actions)
+[![JupyterBook](https://img.shields.io/badge/JupyterBook-live-blue)](https://akhilkarra.github.io/agentomics/)
+[![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://pre-commit.com/)
+[![codecov](https://codecov.io/gh/akhilkarra/agentomics/branch/main/graph/badge.svg)](https://codecov.io/gh/akhilkarra/agentomics)
+
 ## Introduction
 
 Welcome to Agentomics! A repository for creating a macroeconomic simulation powered by a multi-agent LLM system.
@@ -15,4 +21,4 @@ To set up the working environment in your workspace, run ``make env``. This will
 ## Running Experiment
 
 The main experiment script is stored under ``scripts/economic_simulations/three_banks.py``. To run this experiment, execute the command
-``python3 -m scripts/economic_simulations/three_banks/py`` at the root of the repository.
+``python3 -m scripts.economic_simulations.three_banks`` at the root of the repository.

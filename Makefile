@@ -67,12 +67,8 @@ reference-docs:
 	@echo "Creating documentation..." && \
 	. ${CONDA}/etc/profile.d/conda.sh && \
 	conda activate $(env_name) && \
-	. ${CONDA}/etc/profile.d/conda.sh && \
-	poetry run pdoc agentomics -o docs/api --html --force
+	poetry run pdoc --html agentomics --output-dir docs/api
 	@echo "Done!"
-
-# . ${CONDA}/etc/profile.d/conda.sh && \
-# conda activate $(env_name) && \
 
 data:
 	@echo "IMPORTANT: Please make sure you activate your environment before running this target.\nSetting up Data Version Control (DVC)..." && \
