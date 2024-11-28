@@ -3774,14 +3774,14 @@ zookeeper = ["kazoo (>=2.8.0)"]
 
 [[package]]
 name = "langroid"
-version = "0.23.0"
+version = "0.23.3"
 description = "Harness LLMs with Multi-Agent Programming"
 category = "main"
 optional = false
 python-versions = "<3.13,>=3.10"
 files = [
-    {file = "langroid-0.23.0-py3-none-any.whl", hash = "sha256:d8d9bd5a518d25d6c21aab5e86a74c22996f40be3f50a8a4599d3a345d361c32"},
-    {file = "langroid-0.23.0.tar.gz", hash = "sha256:6cea50eca953774518bece3d1464272a406e17b55a977901c00d77f11911077f"},
+    {file = "langroid-0.23.3-py3-none-any.whl", hash = "sha256:bf27cca9f27badb7d9a833a664934e86b06e731b5b73879fc5c67202ce42a319"},
+    {file = "langroid-0.23.3.tar.gz", hash = "sha256:7ffc769322d3cb0c59e6a3bb0ef12fd8c9754910d1c861023909f2a0a1fcd0d5"},
 ]
 
 [package.dependencies]
@@ -9173,4 +9173,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11.5, <3.13"
-content-hash = "8e41f6fc7298fb83872dc5c206de3abefa041075cc36806cc3d4f416e08a9e06"
+content-hash = "ab105fe4cdda8dfb8c378d06aeac3dbc629179c1ca583b00f2af0933437751e7"
