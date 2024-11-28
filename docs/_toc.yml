@@ -2,7 +2,4 @@
 # Learn more at https://jupyterbook.org/customize/toc.html
 
 format: jb-book
-root: intro.md
-chapters:
-- title: API Documentation
-  url: api/agentomics/index.html
+root: intro
