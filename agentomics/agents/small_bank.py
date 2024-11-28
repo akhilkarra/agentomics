@@ -11,7 +11,7 @@ Author: Akhil Karra
 import langroid as lr
 import langroid.language_models as lm
 
-from agentomics.common.data_structures import ThreeBankGlobalState
+from agentomics.common.data_structures import ThreeBankGlobalState, initialize_test_data
 from agentomics.tools.small_bank_knobs import ResultSmallBankKnobsTool
 
 
@@ -83,5 +83,21 @@ def run_state(model_name, globals: ThreeBankGlobalState) -> ResultSmallBankKnobs
     small_bank_task = make_small_bank_task(model_name)
     return small_bank_task.run(prompt)
 
-# if __name__ == "main":
-#     # run some basic tests
+
+def main():
+    model = "groq/llama-3.1-70b-versatile"
+    small_bank_results: ResultSmallBankKnobsTool | None = None
+
+    globals = initialize_test_data()
+
+    while small_bank_results is None:
+        small_bank_results = run_state(model, globals)
+    new_small_bank_knobs = small_bank_results.result_small_bank_knobs
+
+    print("Result from SmallBank Agent")
+    for (name, val) in new_small_bank_knobs.__dict__.items():
+        print(name, ": ", val)
+
+
+if __name__ == "__main__":
+    main()

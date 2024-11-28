@@ -11,7 +11,7 @@ Author: Akhil Karra
 import langroid as lr
 import langroid.language_models as lm
 
-from agentomics.common.data_structures import ThreeBankGlobalState
+from agentomics.common.data_structures import ThreeBankGlobalState, initialize_test_data
 from agentomics.tools.econ_vars_tool import ResultEconVarsTool
 
 
@@ -79,12 +79,6 @@ def make_economy_agent_llm_task(model: str):
     )[ResultEconVarsTool]
     return economy_agent_task
 
-# Add type in brackets to Task to specify option of that type (nice!)
-# May not need fallback at all, but use a guard if you are using it
-# Remember debug flag
-# Wolfram Mathematica / Alpha for regression to percolate effects in economy
-# instead of LLM
-
 
 def run_state(model_name, globals: ThreeBankGlobalState) -> ResultEconVarsTool | None:
     prompt = f"""Here is the latest data. economic_variables is the header
@@ -99,3 +93,22 @@ def run_state(model_name, globals: ThreeBankGlobalState) -> ResultEconVarsTool |
     """
     economy_agent_task = make_economy_agent_llm_task(model_name)
     return economy_agent_task.run(prompt)
+
+
+def main():
+    model = "groq/llama-3.1-70b-versatile"
+    economy_agent_results: ResultEconVarsTool | None = None
+
+    globals = initialize_test_data()
+
+    while economy_agent_results is None:
+        economy_agent_results = run_state(model, globals)
+    new_econ_vars = economy_agent_results.result_econ_vars
+
+    print("Result from Economy Agent LLM")
+    for (name, val) in new_econ_vars.__dict__.items():
+        print(name, ": ", val)
+
+
+if __name__ == "__main__":
+    main()

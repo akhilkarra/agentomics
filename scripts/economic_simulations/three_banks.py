@@ -11,7 +11,7 @@ import agentomics.agents.big_bank as big_bank
 import agentomics.agents.central_bank as central_bank
 import agentomics.agents.economy_agent_llm as economy_agent
 import agentomics.agents.small_bank as small_bank
-from agentomics.common.data_structures import ThreeBankGlobalState
+from agentomics.common.data_structures import initialize_test_data
 from agentomics.common.types import NonnegPercent, Percent
 from agentomics.tools.big_bank_knobs import ResultBigBankKnobsTool
 from agentomics.tools.central_bank_knobs import ResultCentralBankKnobsTool
@@ -84,70 +84,10 @@ def simulate(globals, model):
         globals.number_of_quarters_to_simulate -= 1
 
 
-def initialize(empty_global: ThreeBankGlobalState):
-    """Initial values for macroeconomic variables"""
-    empty_global.economic_variables.gdp_growth_rate.set_array([
-        Percent(0.03),  # 3% growth
-        Percent(0.025),  # 2.5% growth
-        Percent(0.02),  # 2% growth
-    ])
-
-    empty_global.economic_variables.unemployment_rate.set_array([
-        NonnegPercent(0.05),  # 5% unemployment
-        NonnegPercent(0.05),  # 5% unemployment
-        NonnegPercent(0.05),  # 5% unemployment
-    ])
-
-    empty_global.economic_variables.inflation_rate.set_array([
-        Percent(0.025),  # 2.5% inflation
-        Percent(0.03),   # 3% inflation
-        Percent(0.035),  # 3.5% inflation
-    ])
-
-    empty_global.central_bank_knobs.target_interest_rate.set_array([
-        NonnegPercent(0.02),  # 2% target interest rate
-        NonnegPercent(0.025),  # 2.5% target interest rate
-        NonnegPercent(0.03)    # 3% target interest rate
-    ])
-
-    empty_global.big_bank_knobs.deposit_interest_rate.set_array([
-        NonnegPercent(0.01),  # 1% deposit interest rate
-        NonnegPercent(0.015),  # 1.5% deposit interest rate
-        NonnegPercent(0.02)    # 2% deposit interest rate
-    ])
-
-    empty_global.big_bank_knobs.loan_to_deposit_ratio.set_array([
-        NonnegPercent(0.8),  # 80% loan-to-deposit ratio
-        NonnegPercent(0.75),  # 75% loan-to-deposit ratio
-        NonnegPercent(0.7)    # 70% loan-to-deposit ratio
-    ])
-
-    empty_global.small_bank_knobs.consumer_loan_focus.set_array([
-        NonnegPercent(0.6),  # 60% focus on consumer loans
-        NonnegPercent(0.65),  # 65% focus on consumer loans
-        NonnegPercent(0.7)    # 70% focus on consumer loans
-    ])
-
-    empty_global.small_bank_knobs.loans_interest_rate.set_array([
-        NonnegPercent(0.04),  # 4% loans interest rate
-        NonnegPercent(0.045),  # 4.5% loans interest rate
-        NonnegPercent(0.05)    # 5% loans interest rate
-    ])
-
-    empty_global.central_bank_knobs.securities_holdings_pc_change.set_array([
-        Percent(0.01),  # 1% increase in securities holdings
-        Percent(0.015),  # 1.5% increase in securities holdings
-        Percent(0.02)    # 2% increase in securities holdings
-    ])
-
-    empty_global.number_of_quarters_to_simulate = 1
-
-
 def main():
     model = MODEL_NAME
-    globals = ThreeBankGlobalState()
+    globals = initialize_test_data()
 
-    initialize(globals)
     print(globals.print_subfields())
 
     simulate(globals, model)
