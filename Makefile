@@ -67,7 +67,7 @@ reference-docs:
 	@echo "Creating documentation..." && \
 	. ${CONDA}/etc/profile.d/conda.sh && \
 	conda activate $(env_name) && \
-	poetry run pdoc --html agentomics --output-dir docs/api
+	poetry run pdoc agentomics --output-dir docs/api
 	@echo "Done!"
 
 data:
