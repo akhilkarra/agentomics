@@ -5,4 +5,4 @@ format: jb-book
 root: intro.md
 chapters:
 - title: API Documentation
-  url: ./api/index.html
+  url: api/agentomics/index.html
