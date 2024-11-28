@@ -24,3 +24,4 @@ logs/
 coverage.xml
 htmlcov/
 docs/api
+.env

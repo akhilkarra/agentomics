@@ -8,17 +8,65 @@
 
 ## Introduction
 
-Welcome to Agentomics! A repository for creating a macroeconomic simulation powered by a multi-agent LLM system.
+Welcome to **Agentomics**, a new framework for simulating macroeconomic dynamics using multi-agent systems powered by large language models (LLMs). This repository demonstrates how intelligent agents representing different financial institutions can interact dynamically to model and analyze economic behaviors under varying conditions.
 
-The specific goal of this simulation is to see how introducing pertubations in different economic metrics could influence the behaviors of central and commercial banks, and how different magnitudes of such pertubations can influence major changes in economic policy and lending behaviors. I aim to achieve this using the information stored in the LLM's weights after training, and in doing so, evaluating how closely the LLM's predictions match different existing case studies to evaluate its validity (even if these are not necessarily out-of-sample evaluations).
+### What is Agentomics?
 
-This repository contains a script for this economic simulation and associated custom modules and utilities.
+Agentomics is a macroeconomic simulation framework that explores:
+
+- How economic perturbations influence the behaviors of central and commercial banks.
+- The magnitude of these perturbations and their impact on economic policy and lending behaviors.
+- The predictive power of LLMs in simulating realistic agentic interactions and matching case studies.
+
+This project leverages the LLM's trained knowledge to generate insights into economic decision-making processes, providing a practical tool for researchers and developers interested in AI-driven simulations of macroeconomic systems.
+
+## Features
+
+- **Multi-Agent Simulation**: Model interactions among Small Banks, Big Banks, and Central Banks in a realistic economic environment.
+- **Powered by Langroid**: Utilize the `langroid` framework to create intelligent agents and manage their interactions.
+- **Customizable Scenarios**: Easily introduce economic perturbations and analyze their effects on agent behavior.
+- **Case Study Validation**: Evaluate how closely the simulation aligns with real-world economic case studies.
 
 ## Repository Setup
 
-To set up the working environment in your workspace, run ``make env``. This will create an Anaconda virtual environment named "agentomics" and will install all the necessary packages using the Poetry package manager. After installation, run ``conda activate agentomics`` to activate the environment.
+To set up the working environment:
 
-## Running Experiment
+1. Run the following command to install dependencies and set up an Anaconda virtual environment named `agentomics`:
+   ```bash
+   make env
+   ```
 
-The main experiment script is stored under ``scripts/economic_simulations/three_banks.py``. To run this experiment, execute the command
-``python3 -m scripts.economic_simulations.three_banks`` at the root of the repository.
+2. Activate the virtual environment:
+   ```bash
+   conda activate agentomics
+   ```
+
+This will ensure all necessary packages are installed using the Poetry package manager, providing a ready-to-use environment for running simulations.
+
+## Running the Simulation
+
+The primary script for running the macroeconomic simulation is located at:
+
+``scripts/economic_simulations/three_banks.py``
+
+To execute the script:
+
+```bash
+python3 -m scripts.economic_simulations.three_banks
+```
+
+This simulation models interactions among three types of financial agents:
+
+- **Small Banks**: Representing community-focused financial institutions.
+- **Big Banks**: Representing large commercial banks with significant economic influence.
+- **Central Banks**: Acting as regulatory authorities managing monetary policy.
+
+The output provides insights into how economic perturbations and agent interactions influence the macroeconomic system.
+
+## Learn More
+
+For a detailed exploration of the project's architecture, features, and use cases, visit the accompanying [JupyterBook](https://akhilkarra.github.io/agentomics/) or read the [blog post](#) that delves into the conceptual framework and implementation of Agentomics.
+
+## Contributing
+
+Contributions to Agentomics are welcome! Feel free to submit issues, feature requests, or pull requests to help improve the framework.
