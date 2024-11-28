@@ -3,20 +3,3 @@
 
 format: jb-book
 root: intro.md
-parts:
-  - caption: API Reference
-    chapters:
-      - file: api.rst
-  - caption: Methods
-    chapters:
-      - file: methods.md
-        sections:
-        - file: scenarios/proposal_main.md
-          sections:
-            - file: scenarios/banks/central_commercial_banks.md
-  - caption: Results
-    chapters:
-      - file: results/results.md
-  - caption: Conclusions
-    chapters:
-      - file: conclusions.md

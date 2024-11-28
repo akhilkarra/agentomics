@@ -1,33 +1,19 @@
-# Agentomics: Simulating Macroeconomic Dynamics with Intelligent Agents
+
+# Exploring Agentomics: Simulating Macroeconomic Dynamics with Intelligent Agents
 
 Macroeconomic systems are intricate, driven by the interactions of financial institutions, policy decisions, and market forces. *Agentomics* takes a hands-on approach to modeling these dynamics using artificial intelligence, agent-based systems, and economic principles. This project demonstrates how developers can leverage the `langroid` framework to build intelligent, agentic systems for simulating and analyzing complex economic scenarios.
 
 ## Project Overview
 
-The Agentomics project creates a simulation environment that models interactions among four LLM-powered agents:
+The Agentomics project creates a simulation environment that models interactions among three types of financial agents:
 
-1. **SmallBank**: Represents community-focused financial institutions that primarily serve local populations. These agents simulate behaviors like lending, borrowing, and responding to localized economic conditions, emphasizing their grassroots influence on the broader economy.
+1. **Small Banks**: Community-focused financial institutions with localized economic influence.
+2. **Big Banks**: Large commercial banks that significantly impact the broader economy.
+3. **Central Banks**: Regulatory authorities tasked with managing monetary policy and ensuring economic stability.
 
-2. **BigBank**: Acts as a representative large commercial bank with national/international reach. They simulate behaviors such as adjusting reserve requirements, managing large-scale lending operations, and interacting with central regulatory policies, showcasing their significant influence on macroeconomic trends.
-
-3. **CentralBank**: Representative amalgamation of regulatory authorities responsible for overseeing monetary policy and maintaining economic stability. It manages high-level actions like adjusting interest rates, implementing quantitative easing, and responding to economic shifts to guide the simulated economy toward stability.
-
-4. **EconomyAgent**: Serves as the central orchestrator of the simulation. By analyzing inputs and feedback from all agents, EconomyAgent ensures the simulation remains cohesive and reflective of real-world dynamics.
-
-
-Each of these agents is powered by LLMs and leverages custom tools to make decisions, respond to economic inputs, and influence the simulated macroeconomic environment.
-
-![Agentomics Diagram](agentomics_diagram.png)
+Each of these agents is powered by large language models (LLMs) and leverages custom tools to make decisions, respond to economic inputs, and influence the simulated macroeconomic environment.
 
 ## Key Features of Agentomics
-
-### Agent-Based Architecture
-
-Agentomics utilizes intelligent agents designed using the `langroid` framework. This architecture enables each agent to:
-
-- **Process Economic Inputs**: Agents analyze economic conditions and other agents' behaviors to inform decision-making.
-- **Adjust Economic Variables**: Each agent controls specific parameters ("knobs") that influence their behavior and the overall economy.
-- **Simulate Interactions**: Agents interact dynamically, creating realistic simulations of economic phenomena.
 
 ### Using `langroid` to Build Agentic Systems
 
@@ -48,6 +34,13 @@ Agentomics showcases how developers can utilize the `langroid` framework to crea
    - Use `langroid`'s messaging framework to manage dynamic exchanges between agents.
    - Track agent decisions and their impacts using shared data structures.
 
+### Agent-Based Architecture
+
+Agentomics utilizes intelligent agents designed using the `langroid` framework. This architecture enables each agent to:
+
+- **Process Economic Inputs**: Agents analyze economic conditions and other agents' behaviors to inform decision-making.
+- **Adjust Economic Variables**: Each agent controls specific parameters ("knobs") that influence their behavior and the overall economy.
+- **Simulate Interactions**: Agents interact dynamically, creating realistic simulations of economic phenomena.
 
 ### Role of LLMs
 
@@ -59,7 +52,13 @@ Large language models are at the heart of Agentomics. They provide the agents wi
 
 ### Tools for Economic Control
 
-Each agent type integrates with specialized tools to manage its parameters. These tools are designed to allow `langroid` to automate the parsing
+Each agent type integrates with specialized tools to manage its parameters. For example:
+
+- **Small Banks**: Use tools to manage community-level lending and borrowing behaviors.
+- **Big Banks**: Adjust commercial lending rates, reserve requirements, and investment strategies.
+- **Central Banks**: Modify interest rates, quantitative easing measures, and regulatory policies.
+
+These tools allow agents to respond adaptively to economic changes, creating a dynamic and realistic simulation environment.
 
 ## Implementation Details
 
@@ -94,4 +93,4 @@ Future enhancements could include incorporating machine learning to refine agent
 
 ## Conclusion
 
-Agentomics represents a new approach in understanding macroeconomic systems. By combining LLMs, agent-based modeling, and economic theory, it provides a new tool for exploring the complexities of financial systems. Whether you’re an economist, technologist, or curious learner, Agentomics offers a new perspective for economic simulation.
+Agentomics provides a practical framework for developers looking to build agent-based systems using the `langroid` framework. By leveraging LLMs, agent-based modeling, and economic theory, it offers a hands-on approach to creating intelligent simulations. Whether you’re an AI developer, technologist, or researcher, Agentomics is a valuable guide to constructing and exploring agentic systems with real-world applications.

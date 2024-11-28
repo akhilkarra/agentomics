@@ -1,0 +1,24 @@
+@startuml arch
+
+actor "Small Bank" as SmallBank
+actor "Big Bank" as BigBank
+actor "Central Bank" as CentralBank
+actor "Global State Manager" as GlobalState
+actor "Knobs Tool" as KnobsTool
+
+' rectangle "Agentomics System" {
+'     participant "EconomyAgent" as EconomyAgent
+' }
+
+SmallBank -> EconomyAgent : Provide localized economic data
+BigBank -> EconomyAgent : Provide commercial banking behaviors
+CentralBank -> EconomyAgent : Share monetary policy updates
+
+EconomyAgent -> GlobalState : Update economic indicators
+EconomyAgent -> KnobsTool : Adjust economic parameters
+
+EconomyAgent -> SmallBank : Feedback on economic variables
+EconomyAgent -> BigBank : Adjusted commercial settings
+EconomyAgent -> CentralBank : Suggested monetary changes
+
+@enduml
