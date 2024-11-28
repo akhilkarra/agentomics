@@ -21,3 +21,5 @@ pdoc/
 # ruff caches
 .ruff_cache/
 logs/
+coverage.xml
+htmlcov/

@@ -4,6 +4,7 @@
 [![Build Status](https://github.com/akhilkarra/agentomics/actions/workflows/build.yml/badge.svg)](https://github.com/akhilkarra/agentomics/actions)
 [![JupyterBook](https://img.shields.io/badge/JupyterBook-live-blue)](https://akhilkarra.github.io/agentomics/)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://pre-commit.com/)
+[![codecov](https://codecov.io/gh/akhilkarra/agentomics/branch/main/graph/badge.svg)](https://codecov.io/gh/akhilkarra/agentomics)
 
 ## Introduction
 
