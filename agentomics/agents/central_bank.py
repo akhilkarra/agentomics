@@ -9,7 +9,7 @@ authority of a fictional country for macroeconomic simulations
 import langroid as lr
 import langroid.language_models as lm
 
-from agentomics.common.data_structures import ThreeBankGlobalState
+from agentomics.common.data_structures import ThreeBankGlobalState, initialize_test_data
 from agentomics.tools.central_bank_knobs import ResultCentralBankKnobsTool
 
 
@@ -60,6 +60,7 @@ def make_central_bank_task(model: str):
     )[ResultCentralBankKnobsTool]
     return central_bank_task
 
+
 def run_state(model_name, globals: ThreeBankGlobalState) -> ResultCentralBankKnobsTool | None:
     prompt = f"""Here is the latest data. economic_variables is the header
     given to the series that represent different economic variables over the
@@ -74,3 +75,22 @@ def run_state(model_name, globals: ThreeBankGlobalState) -> ResultCentralBankKno
     """
     central_bank_task = make_central_bank_task(model_name)
     return central_bank_task.run(prompt)
+
+
+def main():
+    model = "groq/llama-3.1-70b-versatile"
+    central_bank_results: ResultCentralBankKnobsTool | None = None
+
+    globals = initialize_test_data()
+
+    while central_bank_results is None:
+        central_bank_results = run_state(model, globals)
+    new_central_bank_knobs = central_bank_results.result_central_bank_knobs
+
+    print("Result from CentralBank Agent")
+    for (name, val) in new_central_bank_knobs.__dict__.items():
+        print(name, ":", val)
+
+
+if __name__ == "__main__":
+    main()

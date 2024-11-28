@@ -73,7 +73,7 @@ def initialize_globals():
 def globals():
     return initialize_globals()
 
-
+@pytest.mark.integration
 def test_three_banks_simulation(globals):
     model = MODEL_NAME
 

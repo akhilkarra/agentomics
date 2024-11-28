@@ -37,14 +37,30 @@ poetry: poetry-dev poetry-test
 
 format:
 	@echo "Formatting files..." && \
+	. ${CONDA}/etc/profile.d/conda.sh && \
+	conda activate $(env_name) && \
 	poetry run ruff check --fix
 	@echo "Done!"
 
-tests:
+test:
 	@echo "Running tests..." && \
 	. ${CONDA}/etc/profile.d/conda.sh && \
 	conda activate $(env_name) && \
-	poetry run pytest
+	poetry run pytest -v
+	@echo "Done!"
+
+test-integration:
+	@echo "Running ONLY INTEGRATION tests..." && \
+	. ${CONDA}/etc/profile.d/conda.sh && \
+	conda activate $(env_name) && \
+	poetry run pytest -m "integration" -v
+	@echo "Done!"
+
+test-non-integration:
+	@echo "Running ONLY NON-INTEGRATION tests..." && \
+	. ${CONDA}/etc/profile.d/conda.sh && \
+	conda activate $(env_name) && \
+	poetry run pytest -m "not integration" -v
 	@echo "Done!"
 
 reference-docs:

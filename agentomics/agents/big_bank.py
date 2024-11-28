@@ -10,7 +10,7 @@ Author: Akhil Karra
 import langroid as lr
 import langroid.language_models as lm
 
-from agentomics.common.data_structures import ThreeBankGlobalState
+from agentomics.common.data_structures import ThreeBankGlobalState, initialize_test_data
 from agentomics.tools.big_bank_knobs import ResultBigBankKnobsTool
 
 
@@ -80,3 +80,22 @@ def run_state(model_name, globals: ThreeBankGlobalState) -> ResultBigBankKnobsTo
     """
     big_bank_task = make_big_bank_task(model_name)
     return big_bank_task.run(prompt)
+
+
+def main():
+    model = "groq/llama-3.1-70b-versatile"
+    big_bank_results: ResultBigBankKnobsTool | None = None
+
+    globals = initialize_test_data()
+
+    while big_bank_results is None:
+        big_bank_results = run_state(model, globals)
+    new_big_bank_knobs = big_bank_results.result_big_bank_knobs
+
+    print("Result from BigBank Agent")
+    for (name, val) in new_big_bank_knobs.__dict__.items():
+        print(name, ": ", val)
+
+
+if __name__ == "__main__":
+    main()
