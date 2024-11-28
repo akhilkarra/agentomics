@@ -21,4 +21,4 @@ To set up the working environment in your workspace, run ``make env``. This will
 ## Running Experiment
 
 The main experiment script is stored under ``scripts/economic_simulations/three_banks.py``. To run this experiment, execute the command
-``python3 -m scripts/economic_simulations/three_banks/py`` at the root of the repository.
+``python3 -m scripts.economic_simulations.three_banks`` at the root of the repository.
