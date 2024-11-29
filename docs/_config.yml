@@ -90,4 +90,15 @@ sphinx:
     html_favicon: _static/lectures-favicon.ico
     html_theme: quantecon_book_theme
     html_static_path: ['_static']
-    header_organisation: Agentomics
+    html_theme_options:
+      authors:
+        - name: Akhil Karra
+          url: https://akhilkarra.github.io/agentomics
+      header_organisation_url: https://akhilkarra.github.io/agentomics
+      header_organisation: Agentomics
+      repository_url: https://github.com/akhilkarra/agentomics
+      nb_repository_url: https://github.com/akhilkarra/agentomics
+      description: This website captures research materials for Simulating Macroeconomic Dynamics with Intelligent Agents
+      keywords: Python, Agentomics, Macroeconomics, Intelligent Agents, Langroid
+      launch_buttons:
+        colab_url: https://colab.research.google.com

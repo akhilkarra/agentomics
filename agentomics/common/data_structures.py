@@ -15,6 +15,29 @@ from langroid.utils.globals import GlobalState
 from agentomics.common.types import NonnegPercent, Percent, TypedArray
 
 
+def _add_series_to_dataframe(df, new_column_name, new_column):
+    # Get the current length of the DataFrame and the new column
+    df_length = len(df)
+    new_column_length = len(new_column)
+
+    if new_column_length < df_length:
+        # If the series is shorter, pad it with NaNs
+        new_column_padded = pd.concat([new_column, pd.Series([np.nan] * (df_length - new_column_length))]).reset_index(drop=True)
+    elif new_column_length > df_length:
+        # If the series is longer, extend the DataFrame with NaNs
+        extra_rows = new_column_length - df_length
+        df = pd.concat([df, pd.DataFrame(np.nan, index=range(extra_rows), columns=df.columns)], ignore_index=True)
+        new_column_padded = new_column
+    else:
+        # If the series is the same length, use it directly
+        new_column_padded = new_column
+
+    # Add the processed series as a new column
+    df[new_column_name] = new_column_padded
+
+    return df
+
+
 class Knobs:
     knobs = None
 
@@ -159,8 +182,10 @@ class ThreeBankGlobalState(GlobalState):
                         list_of_lists.append(
                             subfield_value.to_list(elementary_types=True)
                         )
-        array_2d = np.array(list_of_lists).T.tolist()
-        return pd.DataFrame(data=array_2d, columns=column_names)
+        result = pd.DataFrame()
+        for i in range(len(column_names)):
+            _add_series_to_dataframe(result, column_names[i], list_of_lists[i])
+        return result
 
 
 def initialize_test_data():

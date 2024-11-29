@@ -22,7 +22,7 @@ MODEL_NAME = "groq/llama-3.1-70b-versatile"
 OUTPUT_CSV_NAME = "three_banks_output"
 
 
-def simulate(globals, model):
+def simulate(globals, model, outfile=None):
     """Run the three banks simulation given the initial variables and the
     model name to run"""
     while globals.number_of_quarters_to_simulate > 0:
@@ -82,6 +82,10 @@ def simulate(globals, model):
         )
 
         globals.number_of_quarters_to_simulate -= 1
+
+        if outfile is not None:
+            globals_pd = globals.to_pandas_df()
+            globals_pd.to_csv(outfile)
 
 
 def main():

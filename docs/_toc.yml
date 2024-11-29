@@ -4,11 +4,18 @@
 format: jb-book
 root: intro
 parts:
+  - caption: "Project Overview"
+    numbered: true
+    chapters:
+    - file: agentomics
+      title: "Project Overview"
   - caption: "Experiment 1: Evaluation"
+    numbered: true
     chapters:
     - file: evaluate_multi_agent_system
       title: "Evaluate Multi-Agent System"
   - caption: API Reference
+    numbered: true
     chapters:
       - file: api/agentomics/agents/index
         title: agentomics.agents
