@@ -6,6 +6,7 @@ Utilities to download and preprocess series from the Federal Reserve Economic Da
 
 Author: Akhil Karra
 """
+
 from functools import reduce
 
 import pandas as pd
@@ -59,4 +60,4 @@ def get_longest_common_date_range(dataframes, date_column="date"):
 
     assert not largest_block.isnull().values.any(), "Unexpected NaNs found in the largest_block DataFrame."
 
-    return largest_block
+    return largest_block.reset_index(drop=True)

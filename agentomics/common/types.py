@@ -79,34 +79,19 @@ class TypedArray:
 
 
 @dataclass(frozen=True)
-class NonnegFloat(float):
-    """Custom nonnegative float datatype to ensure that LLMs return
-    reasonable nonnegative values to the recurring global state"""
-    value: float
-
-    def __post_init__(self):
-        if self.value < 0.0:
-            raise ValueError("Floating point number must be nonnegative")
-
-    def __repr__(self):
-        return repr(self.value)
-
-    def to_val(self):
-        return self.value
-
-
-@dataclass(frozen=True)
 class Percent(float):
     """Custom percent datatype to ensure that LLMs return reasonable
-    percentage values to the recurring global state."""
+    percentage values to the recurring global state. We treat negative infinite values as N/A values."""
     value: float
     name: str | None = None
 
     def __post_init__(self):
-        if not (0.0 <= abs(self.value) <= 1.0):
+        if not (0.0 <= abs(self.value) <= 1.0) and self.value != float("-inf"):
             raise ValueError("Invalid percentage input")
 
     def __repr__(self):
+        if self.value == float("-inf"):
+            return "N/A"
         return repr(self.value * 100.0) + "%"
 
     def to_val(self):
@@ -115,15 +100,16 @@ class Percent(float):
 
 @dataclass(frozen=True)
 class NonnegPercent(float):
-    """Custom nonnegative percent datatype to ensure that LLMs return reasonable
-    percentage values to the recurring global state."""
+    """Custom nonnegative percent datatype to ensure that LLMs return reasonable percentage values to the recurring global state. We treat negative infinite values as N/A values."""
     value: float
 
     def __post_init__(self):
-        if not (0.0 <= self.value <= 1.0):
+        if not (0.0 <= self.value <= 1.0) and self.value != float("-inf"):
             raise ValueError("Invalid nonnegative percentage input")
 
     def __repr__(self):
+        if self.value == float("-inf"):
+            return "N/A"
         return repr(self.value * 100.0) + "%"
 
     def to_val(self):

@@ -87,7 +87,8 @@ def run_state(model_name, globals: ThreeBankGlobalState) -> ResultEconVarsTool |
     represent the different knobs that the central bank has manipulated in
     the past. big_bank_knobs is the header given to the series that
     represent the different knobs a representative large commercial bank have manipulated in the past. small_bank_knobs is the header given to the series
-    that represent the different knobs that a representative small commercial bank has manipulated in the past.
+    that represent the different knobs that a representative small commercial bank has manipulated in the past. Any N/A value indicates a value that is
+    not availablefor that particular quarter.
     {globals.print_subfields()}
     Now analyze this new data and make your new predictions.
     """
