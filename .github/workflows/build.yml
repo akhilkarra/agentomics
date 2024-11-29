@@ -30,12 +30,14 @@ jobs:
     - name: Run non-integration tests
       env:
         GROQ_API_KEY: ${{secrets.GROQ_API_KEY}}
+        FRED_API_KEY: ${{secrets.FRED_API_KEY}}
       if: github.event_name == 'push'
       run: |
         make test-non-integration
     - name: Run integration tests + non-integration tests
       env:
         GROQ_API_KEY: ${{secrets.GROQ_API_KEY}}
+        FRED_API_KEY: ${{secrets.FRED_API_KEY}}
       if: github.event_name == 'pull_request'
       run : |
         make test
