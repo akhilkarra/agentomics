@@ -10,35 +10,34 @@ parts:
       title: "Evaluate Multi-Agent System"
   - caption: API Reference
     chapters:
-      - file: api/agentomics/index
-        title: agentomics
+      - file: api/agentomics/agents/index
+        title: agentomics.agents
         sections:
-        - file: api/agentomics/agents/index
-          title: agents
-          sections:
-          - file: api/agentomics/agents/big_bank
-            title: big_bank
-          - file: api/agentomics/agents/small_bank
-            title: small_bank
-          - file: api/agentomics/agents/central_bank
-            title: central_bank
-          - file: api/agentomics/agents/economy_agent_llm
-            title: economy_agent_llm
-        - file: api/agentomics/common/index
-          title: common
-          sections:
-            - file: api/agentomics/common/data_structures
-              title: data_structures
-            - file: api/agentomics/common/types
-              title: types
-        - file: api/agentomics/tools/index
-          title: tools
-          sections:
-            - file: api/agentomics/tools/big_bank_knobs
-              title: big_bank_knobs
-            - file: api/agentomics/tools/small_bank_knobs
-              title: small_bank_knobs
-            - file: api/agentomics/tools/central_bank_knobs
-              title: central_bank_knobs
-            - file: api/agentomics/tools/econ_vars_tool
-              title: econ_vars_tool
+        - file: api/agentomics/agents/big_bank
+          title: big_bank
+        - file: api/agentomics/agents/small_bank
+          title: small_bank
+        - file: api/agentomics/agents/central_bank
+          title: central_bank
+        - file: api/agentomics/agents/economy_agent_llm
+          title: economy_agent_llm
+        options:
+          expand_sections: true
+      - file: api/agentomics/common/index
+        title: agentomics.common
+        sections:
+          - file: api/agentomics/common/data_structures
+            title: data_structures
+          - file: api/agentomics/common/types
+            title: types
+      - file: api/agentomics/tools/index
+        title: agentomics.tools
+        sections:
+          - file: api/agentomics/tools/big_bank_knobs
+            title: big_bank_knobs
+          - file: api/agentomics/tools/small_bank_knobs
+            title: small_bank_knobs
+          - file: api/agentomics/tools/central_bank_knobs
+            title: central_bank_knobs
+          - file: api/agentomics/tools/econ_vars_tool
+            title: econ_vars_tool

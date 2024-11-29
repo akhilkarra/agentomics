@@ -92,7 +92,8 @@ def run_state(model_name, globals: ThreeBankGlobalState) -> ResultEconVarsTool |
     Now analyze this new data and make your new predictions.
     """
     economy_agent_task = make_economy_agent_llm_task(model_name)
-    return economy_agent_task.run(prompt)
+    with lr.utils.output.printing.silence_stdout():
+        return economy_agent_task.run(prompt)
 
 
 def main():
