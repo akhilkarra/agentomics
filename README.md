@@ -65,8 +65,22 @@ The output provides insights into how economic perturbations and agent interacti
 
 ## Learn More
 
-For a detailed exploration of the project's architecture, features, and use cases, visit the accompanying [JupyterBook](https://akhilkarra.github.io/agentomics/) or read the [blog post](#) that delves into the conceptual framework and implementation of Agentomics.
+For a detailed exploration of the project's architecture, features, and use cases, visit the accompanying [JupyterBook](https://akhilkarra.github.io/agentomics/) or read the blog post (coming soon!) that delves into the conceptual framework and implementation of Agentomics.
 
 ## Contributing
 
 Contributions to Agentomics are welcome! Feel free to submit issues, feature requests, or pull requests to help improve the framework.
+
+### Acknowledgments and Modifications
+
+This project uses and customizes the QuantEcon Book Theme, which is originally licensed under:
+
+- The BSD 3-Clause License (for code)
+- The Creative Commons Attribution-ShareAlike 4.0 International License (for design elements)
+
+### Modifications
+The following changes have been made to the original QuantEcon Book Theme:
+- Replaced the original logos with a custom logo.
+- Adjusted design elements to align with the project's branding and goals.
+
+Original theme available at [QuantEcon GitHub Repository](https://github.com/QuantEcon/quantecon-book-theme).
