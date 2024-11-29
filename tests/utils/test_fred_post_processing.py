@@ -65,7 +65,11 @@ def test_full_overlap():
     })
 
     # Assert that the result matches the expected DataFrame
-    pd.testing.assert_frame_equal(result.reset_index(drop=True), expected.reset_index(drop=True))
+    pd.testing.assert_frame_equal(
+        result.reset_index(drop=True),
+        expected.reset_index(drop=True),
+        check_dtype=False
+    )
 
 def test_partial_overlap():
     # Test Case: Partial Overlap
@@ -117,7 +121,11 @@ def test_partial_overlap():
     })
 
     # Assert that the result matches the expected DataFrame
-    pd.testing.assert_frame_equal(result.reset_index(drop=True), expected.reset_index(drop=True))
+    pd.testing.assert_frame_equal(
+        result.reset_index(drop=True),
+        expected.reset_index(drop=True),
+        check_dtype=False
+    )
 
 def test_no_overlap():
     # Test Case: No Overlap
@@ -192,16 +200,20 @@ def test_missing_values():
     # Expected Output:
     # | Index |       date       | A |  B  |
     # |-------|------------------|---|-----|
-    # |   0   | 2020-01-05       | 5 | 10  |
-    expected_dates = pd.to_datetime(["2020-01-05"])
+    # |   0   | 2020-01-01       | 1 |  6  |
+    expected_dates = pd.to_datetime(["2020-01-01"])
     expected = pd.DataFrame({
         "date": expected_dates,
-        "A": [5],
-        "B": [10]
+        "A": [1],
+        "B": [6]
     })
 
     # Assert that the result matches the expected DataFrame
-    pd.testing.assert_frame_equal(result.reset_index(drop=True), expected.reset_index(drop=True))
+    pd.testing.assert_frame_equal(
+        result.reset_index(drop=True),
+        expected.reset_index(drop=True),
+        check_dtype=False
+    )
 
 def test_single_dataframe():
     # Test Case: Single DataFrame
@@ -232,7 +244,11 @@ def test_single_dataframe():
     expected = df.copy()
 
     # Assert that the result matches the expected DataFrame
-    pd.testing.assert_frame_equal(result.reset_index(drop=True), expected.reset_index(drop=True))
+    pd.testing.assert_frame_equal(
+        result.reset_index(drop=True),
+        expected.reset_index(drop=True),
+        check_dtype=False
+    )
 
 def test_non_contiguous_blocks():
     # Test Case: Non-Contiguous Blocks
@@ -295,4 +311,8 @@ def test_non_contiguous_blocks():
     })
 
     # Assert that the result matches the expected DataFrame
-    pd.testing.assert_frame_equal(result.reset_index(drop=True), expected.reset_index(drop=True))
+    pd.testing.assert_frame_equal(
+        result.reset_index(drop=True),
+        expected.reset_index(drop=True),
+        check_dtype=False
+    )

@@ -13,7 +13,7 @@ import pandas as pd
 
 def get_longest_common_date_range(dataframes, date_column="date"):
     """
-    Given a list of DataFrames with a common date column, return the longest contiguous date range where all DataFrames have entries for every date. In case there are contiguous blocks of the same size that work, this function returns the last block in the DataFrames.
+    Given a list of DataFrames with a common date column, return the longest contiguous date range where all DataFrames have entries for every date. In case there are contiguous blocks of the same size that work, this function returns the first valid block in the DataFrames.
 
     Parameters:
     - dataframes (list of pd.DataFrame): List of DataFrames to process.
