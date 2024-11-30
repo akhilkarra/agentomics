@@ -16,6 +16,7 @@ repos:
     rev: 0.7.1
     hooks:
       - id: nbstripout
+        args: ["--keep-output"]
   - repo: https://github.com/nbQA-dev/nbQA
     rev: 1.8.7
     hooks:

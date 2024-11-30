@@ -3,6 +3,8 @@
 
 format: jb-book
 root: intro
+execute:
+  execute_notebooks: "off"
 parts:
   - caption: "Agentomics"
     numbered: true
