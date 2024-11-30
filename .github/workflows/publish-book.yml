@@ -5,7 +5,7 @@ on:
 
 # This job installs dependencies, builds the book, and pushes it to `gh-pages`
 jobs:
-  deploy-book:
+  publish-book:
     runs-on: ubuntu-latest
     permissions:
       pages: write
@@ -34,6 +34,7 @@ jobs:
       env:
         GROQ_API_KEY: ${{secrets.GROQ_API_KEY}}
         FRED_API_KEY: ${{secrets.FRED_API_KEY}}
+        OPENAI_API_KEY: $${{secrets.OPENAI_API_KEY}}
       with:
         path: _build/.jupyter_cache
         key: jupyter-book-cache-${{ hashFiles('requirements.txt') }}
@@ -48,6 +49,7 @@ jobs:
       env:
         GROQ_API_KEY: ${{secrets.GROQ_API_KEY}}
         FRED_API_KEY: ${{secrets.FRED_API_KEY}}
+        OPENAI_API_KEY: $${{secrets.OPENAI_API_KEY}}
       run: |
         make books
 
