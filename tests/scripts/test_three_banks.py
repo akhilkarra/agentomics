@@ -5,7 +5,7 @@ from agentomics.common.types import NonnegPercent, Percent
 from agentomics.utils.logging import configure_logging
 from scripts.economic_simulations.three_banks import simulate_two_way
 
-MODEL_NAME = "groq/llama-3.1-8b-instant"
+MODEL_NAME = "gpt-4o-mini"
 
 
 def initialize_globals():

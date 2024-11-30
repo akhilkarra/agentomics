@@ -31,6 +31,7 @@ jobs:
       env:
         GROQ_API_KEY: ${{secrets.GROQ_API_KEY}}
         FRED_API_KEY: ${{secrets.FRED_API_KEY}}
+        OPENAI_API_KEY: $${{secrets.OPENAI_API_KEY}}
       if: github.event_name == 'push'
       run: |
         make test-non-integration
@@ -38,6 +39,7 @@ jobs:
       env:
         GROQ_API_KEY: ${{secrets.GROQ_API_KEY}}
         FRED_API_KEY: ${{secrets.FRED_API_KEY}}
+        OPENAI_API_KEY: $${{secrets.OPENAI_API_KEY}}
       if: github.event_name == 'pull_request'
       run : |
         make test
