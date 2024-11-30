@@ -1,9 +1,7 @@
 name: Publish JupyterBook Docs
 
 on:
-  pull_request:
-    branches:
-      - 'main'  # Only main branch on pull-request
+  workflow_dispatch:
 
 # This job installs dependencies, builds the book, and pushes it to `gh-pages`
 jobs:
