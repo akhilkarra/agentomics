@@ -28,3 +28,5 @@ docs/api
 *.log*
 *logs*
 .ipynb_checkpoints/*
+.virtual_documents/*
+*-checkpoint.ipynb
