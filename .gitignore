@@ -26,4 +26,5 @@ htmlcov/
 docs/api
 .env
 *.log*
+*logs*
 .ipynb_checkpoints/*

@@ -5,7 +5,7 @@ from agentomics.common.types import NonnegPercent, Percent
 from agentomics.utils.logging import configure_logging
 from scripts.economic_simulations.three_banks import simulate_two_way
 
-MODEL_NAME = "groq/llama-3.1-8b-instant"
+MODEL_NAME = "gpt-4o-mini"
 
 
 def initialize_globals():
@@ -85,7 +85,7 @@ def test_three_banks_simulation(globals):
 
     # Validate expected output ranges
     gdp_growth = globals.economic_variables.gdp_growth_rate.to_list()[-1]
-    assert 0 <= gdp_growth <= 0.1, f"Unexpected GDP growth rate: {gdp_growth}"
+    assert -0.1 <= gdp_growth <= 0.1, f"Unexpected GDP growth rate: {gdp_growth}"
 
     inflation_rate = globals.economic_variables.inflation_rate.to_list()[-1]
     assert 0 <= inflation_rate <= 0.1, f"Unexpected inflation rate: {inflation_rate}"

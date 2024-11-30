@@ -14,7 +14,6 @@ def mock_task(mocker: MockerFixture):
     task_mock = mocker.MagicMock()
     task_mock.run.return_value = ResultCentralBankKnobsTool(
         result_central_bank_knobs=ResultCentralBankKnobs(
-            interest_rate_goal=0.02,
             target_interest_rate=0.03,
             securities_holdings_pc_change=0.05
         )
@@ -33,6 +32,5 @@ def test_run_state(mock_task, mock_globals):
 
     # Assert the values returned from the mocked LLM response
     assert isinstance(result, ResultCentralBankKnobsTool)
-    assert result.result_central_bank_knobs.interest_rate_goal == 0.02
     assert result.result_central_bank_knobs.target_interest_rate == 0.03
     assert result.result_central_bank_knobs.securities_holdings_pc_change == 0.05
