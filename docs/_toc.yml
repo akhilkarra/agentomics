@@ -48,3 +48,12 @@ parts:
             title: central_bank_knobs
           - file: api/agentomics/tools/econ_vars_tool
             title: econ_vars_tool
+      - file: api/agentomics/utils/index
+        title: agentomics.utils
+        sections:
+          - file: api/agentomics/utils/fred_download
+            title: fred_download
+          - file: api/agentomics/utils/fred_post_processing
+            title: fred_post_processing
+          - file: api/agentomics/utils/logging
+            title: logging

@@ -1,5 +1,9 @@
 # Agentomics
 
+```{contents}
+:depth: 2
+```
+
 ## Simulating Macroeconomic Dynamics with Intelligent Agents
 
 Macroeconomic systems are intricate, driven by the interactions of financial institutions, policy decisions, and market forces. *Agentomics* takes a hands-on approach to modeling these dynamics using artificial intelligence, agent-based systems, and economic principles. This project demonstrates how developers can leverage the `langroid` framework to build intelligent, agentic systems for simulating and analyzing complex economic scenarios.
