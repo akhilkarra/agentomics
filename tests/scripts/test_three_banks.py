@@ -2,9 +2,10 @@ import pytest
 
 from agentomics.common.data_structures import ThreeBankGlobalState
 from agentomics.common.types import NonnegPercent, Percent
-from scripts.economic_simulations.three_banks import simulate
+from agentomics.utils.logging import configure_logging
+from scripts.economic_simulations.three_banks import simulate_two_way
 
-MODEL_NAME = "groq/llama-3.1-70b-versatile"
+MODEL_NAME = "groq/llama-3.1-8b-instant"
 
 
 def initialize_globals():
@@ -77,8 +78,10 @@ def globals():
 def test_three_banks_simulation(globals):
     model = MODEL_NAME
 
+    configure_logging(log_to_console=True, log_to_file=True)
+
     # Run one step of the simulation
-    simulate(globals, model)
+    simulate_two_way(globals, model)
 
     # Validate expected output ranges
     gdp_growth = globals.economic_variables.gdp_growth_rate.to_list()[-1]

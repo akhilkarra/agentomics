@@ -1,4 +1,4 @@
-# Project Overview
+# Agentomics
 
 ## Simulating Macroeconomic Dynamics with Intelligent Agents
 

@@ -19,7 +19,7 @@ def _add_series_to_dataframe(df, new_column_name, new_column):
     # Get the current length of the DataFrame and the new column
     df_length = len(df)
     new_column_length = len(new_column)
-
+    new_column_padded = None
     if new_column_length < df_length:
         # If the series is shorter, pad it with NaNs
         new_column_padded = pd.concat([new_column, pd.Series([np.nan] * (df_length - new_column_length))]).reset_index(drop=True)
@@ -184,7 +184,7 @@ class ThreeBankGlobalState(GlobalState):
                         )
         result = pd.DataFrame()
         for i in range(len(column_names)):
-            _add_series_to_dataframe(result, column_names[i], list_of_lists[i])
+            result = _add_series_to_dataframe(result, column_names[i], pd.Series(list_of_lists[i]))
         return result
 
 
