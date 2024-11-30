@@ -73,8 +73,6 @@ class CentralBankKnobs(Knobs):
     key knobs manipulated by the CentralBank which are known
     to all agents"""
     def __init__(self):
-        self.interest_rate_goal = Percent(0.02,
-                                          name="Interest Rate Goal (%)")
         self.target_interest_rate = TypedArray(NonnegPercent,
             series_name="Target Interest Rate (%)",
             var_name="target_interest_rate")

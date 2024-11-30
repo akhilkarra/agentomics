@@ -16,7 +16,6 @@ from langroid.pydantic_v1 import BaseModel, Field
 class ResultCentralBankKnobs(BaseModel):
     """Data structure for extracting output central bank knobs from
     CentralBank"""
-    interest_rate_goal: float = Field(..., description="Interest Rate Long-Term Goal (%)")
     target_interest_rate: float = Field(..., description="Target Interest Rate (%)")
     securities_holdings_pc_change: float = Field(..., description="Securities Holdings Percent Change (%)")
 
@@ -40,7 +39,6 @@ class ResultCentralBankKnobsTool(lr.agent.ToolMessage):
              the target interest rate should be at 1.5%,
              and total securities holdings should decrease by 10%.""",
              cls(result_central_bank_knobs=ResultCentralBankKnobs(
-                interest_rate_goal=0.02,
                 target_interest_rate=0.015,
                 securities_holdings_pc_change=-0.1
              ))),
