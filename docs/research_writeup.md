@@ -77,7 +77,7 @@ These series were then incorporated into the initial global state as the initial
 
 {numref}`evaluate-mas` shows the graphs generated for the economic variables and `CentralBank` knobs as a result of this backtesting evaluation. The data points in the red shaded region represent the data points given to the simulation initially as context, and the data points that follow show the predicted or actual readings of the respective series.
 
-```{figure} ./evaluate-mas.png
+```{figure} ./evaluate_mas.png
 ---
 name: evaluate-mas
 ---
@@ -100,7 +100,7 @@ Two simulation runs were conducted. One simulation run was conducted wihout the 
 
 {numref}`percolate-deltas` shows the generated graphs for the economic variables and bank knobs from experiment 2. Red-shaded points represent points given in context while points after the red shading show the predicted data points from the control or experimental simulations.
 
-```{figure} ./percolate-deltas.png
+```{figure} ./percolate_deltas.png
 ---
 name: percolate-deltas
 ---
