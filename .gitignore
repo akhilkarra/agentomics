@@ -30,3 +30,4 @@ docs/api
 .ipynb_checkpoints/*
 .virtual_documents/*
 *-checkpoint.ipynb
+docs/.ipynb_checkpoints/evaluate_multi_agent_system-checkpoint.ipynb

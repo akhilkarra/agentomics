@@ -7,13 +7,15 @@ parts:
   - caption: "Agentomics"
     numbered: true
     chapters:
-    - file: agentomics
-      title: "Project Overview"
+    - file: research_writeup
+      title: "Introduction"
   - caption: "Experiments"
     numbered: true
     chapters:
     - file: evaluate_multi_agent_system
       title: "Backtesting Evaluation"
+    - file: percolate_deltas
+      title: "Perturbate Individual Variables Experiment"
   - caption: API Reference
     numbered: true
     chapters:
