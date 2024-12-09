@@ -13,68 +13,139 @@ Understanding macroeconomic systems requires dissecting complex interactions amo
 
 Recent advancements in Artificial Intelligence (AI), particularly Large Language Models (LLMs), have introduced new possibilities for modeling multi-agent systems (MASs). LLMs provide agents with advanced reasoning capabilities, enabling them to process nuanced inputs, adapt to changing environments, and communicate effectively. This has opened the door to innovative research on LLM-powered MASs, including their applications in decision-making (Huang et al., 2024) and macroeconomic simulations (Li et al., 2023).
 
-Building on these developments, *Agentomics* is an exploratory project that leverages the Langroid framework to simulate macroeconomic systems using intelligent agents. By integrating economic principles with cutting-edge AI, *Agentomics* investigates how agent interactions—representing banks, regulators, and the broader economy—can provide insights into financial stability and the ripple effects of policy decisions.
+Building on these developments, *Agentomics* is an exploratory project that leverages the Langroid framework to simulate macroeconomic systems using intelligent agents. By integrating economic principles with cutting-edge AI, this project investigates how agent interactions—representing banks, regulators, and the broader economy—can provide insights into financial stability and the ripple effects of policy decisions.
 
 This project also reflects a personal journey of learning. Much of the work involved understanding MASs, becoming proficient with Langroid, and designing agent behaviors to align with macroeconomic concepts. The economic insights gained, though preliminary, highlight the potential of combining MASs and LLMs for studying complex systems.
 
 
-## Project Methodology
+## Simulation Overview
 
-The *Agentomics* project focuses on modeling macroeconomic dynamics through a simulation involving four distinct types of agents. Each agent is designed to reflect a specific role within the financial ecosystem, leveraging LLMs to make decisions, adjust economic variables, and interact with one another dynamically.
+The *Agentomics* project focuses on modeling macroeconomic dynamics through a simulation involving four distinct agents. Each agent is designed to reflect a specific role within the financial ecosystem, leveraging LLMs to make decisions, adjust parameters, and understand adjustments made by other agents.
 
-### Agent Design and Roles
+### Agents
 
-1. **SmallBank**: Represents community-focused financial institutions. These agents simulate grassroots behaviors like localized lending and borrowing, highlighting their influence on regional economies.
-2. **BigBank**: A proxy for large commercial banks with national or international reach. These agents manage large-scale lending operations, adjust reserve requirements, and interact heavily with regulatory policies.
-3. **CentralBank**: Models regulatory authorities responsible for monetary policy. It executes actions such as adjusting interest rates and implementing quantitative easing to maintain economic stability.
-4. **EconomyAgent**: The central orchestrator of the simulation. This agent aggregates inputs and feedback from all others, ensuring the simulation’s cohesiveness and alignment with real-world economic dynamics.
+1. `SmallBank`: Represents community-focused financial institutions. These agents simulate localized lending and borrowing, highlighting their influence on regional economies.
+2. `BigBank`: A proxy for large commercial banks with national or international reach. These agents manage large-scale lending operations, adjust reserve requirements, and interact heavily with regulatory policies.
+3. `CentralBank`: Models regulatory authorities responsible for monetary policy. It executes actions such as adjusting interest rates and implementing quantitative easing to maintain economic stability.
+4. `EconomyAgent`: This agent aggregates inputs and feedback from all others, ensuring the simulation’s cohesiveness and alignment with real-world economic dynamics.
 
-Each agent’s behavior is powered by LLMs configured using Langroid’s flexible architecture. The decision-making process incorporates contextual inputs, historical data, and economic theory.
+Each agent’s behavior is powered by LLMs configured using Langroid’s flexible architecture. These LLMs are not fine-tuned and their hyperparameters and kept exactly the same as provided. The purpose is to gauge how well the LLMs simulate these agents based purely on the training data and architecture of the LLM itself.
 
-### Simulation Environment
+I also chose to fix the model used for each agent as a control variable. In the experiments shown in this project, `gpt-4o-mini` was fixed as the LLM of choice for all agents.
 
-The simulation operates as a closed-loop system where agents communicate and interact based on defined parameters, or "knobs." Examples include:
-- **Interest Rates**: Adjusted by the CentralBank agent to influence borrowing and lending activities.
-- **Lending Policies**: Controlled by SmallBank and BigBank agents to reflect their operational priorities.
-- **Macroeconomic Indicators**: Monitored and adjusted by the EconomyAgent to guide overall dynamics.
+### Global State
 
-Interactions are facilitated by Langroid’s messaging framework, which enables agents to share information, negotiate, and respond to changes in their environment. This architecture mimics real-world economic behaviors, providing a robust platform for exploration.
+The simulation operates on a round-based architecture where agents communicate and interact based on defined parameters, or "knobs." Here are the knobs for each of the agents above:
 
-<!-- ### Challenges and Learning
+1. `SmallBank`: The small community-focused commercial bank in this simulation deals with lending to consumers and small-businesses. As a result, its major decisions deal with deciding the **loans interest rate** and the **consumer loan focus** (a percentage representing how much of the loans are being provided to individual consumers rather than small businesses).
+1. `BigBank`: While many of the large commercial banks also have arms in asset management, wealth mangement, and investments, I choose to focus on their lending practices since this is the primary lever with which large banks can stimulate spending or savings. Thus, the large commercial bank actively changes its **loan-to-deposit** ratio to change how aggressively or conservatively the bank lends money with respect to deposits. It also adjusts the **deposit interest rate** to change how much money the bank attracts, influencing the bank's liquidity.
+1. `CentralBank`: Modeling after the Federal Reserve in the United States, this central banking authority changes the **target interest rate** charged between banks to borrow money and the **percent change in securities holdings** on its balance sheet to increase or decrease money supply.
+1. `EconomyAgent`: This agent takes the adjustments and behaviors of the other banks and predicts how the economy would respond. In this project, the specific economic variables that this agent manipulates are the **GDP growth rate**, **unemployment rate**, and **inflation rate**, since all three of these rates are used frequently to analyze the state and health of the economy.
 
-Much of the project’s initial focus was on mastering the tools and frameworks required for implementation:
-- **Langroid Integration**: Understanding how to utilize Langroid for agent-based modeling and ensuring seamless communication between agents.
-- **Agent Design**: Balancing the complexity of agent behaviors with the constraints of LLMs, such as context limitations and response consistency.
-- **Simulation Refinement**: Iteratively testing and tuning economic parameters to produce realistic outputs.
+Interactions are facilitated by Langroid’s messaging and tooling frameworks, which enables agents to share information, negotiate, and respond to changes in their environment. These knobs are stored in a global state which is updated on each round of the simulation.
 
-These efforts laid the groundwork for deriving meaningful insights and demonstrated the feasibility of applying LLMs and MASs to macroeconomic research. -->
+I made an emphasis to make these knobs represent percentage quantities because I wanted to debias the prompts to the LLMs as much as possible. Specifically, I wanted to remove any mention to a specific currency, a specific country, or a specific period of time from the prompts to prevent the LLM from regurgitating behaviors of agents in these eras. I went as far as to remove absolute quantities from the knobs in case the LLM makes an association with money values of different magnitudes to different countries.
 
-## Economic Takeaways
+{numref}`simulation-diagram` below shows the process diagram for a round of the simulation.
 
+```{figure} ./simulation-diagram.png
+---
+height: 300px
+name: simulation-diagram
+---
+Process diagram for the Agentomics simulation, including information flow to agents and global state updates.
+```
 
+## Experiments and Takeaways
+
+I devised two experiments to better understand and analyze the system's feasibility and accuracy. The first experiment was a backtesting evaluation experiment to understand how the system performed compared to real-world data. The second experiment ran the simulation twice on two initial states with a slight perturbation in one variable and then showed how the simulations evolved differently over time.
+
+### Experiment 1: Backtesting Evaluation
+
+The purpose of this experiment was to evaluate the MAS's ability to conduct long-term forecasting given limited history, relying on the training data of the LLM to generate the forecasts. The simulation was given eight quarters of economic and central bank data in the USA starting 2018Q1 to 2020Q1 in the initial state, with the goal of forecasting the following quarters until 2024Q1. On each round, the previous prediction by the simulation was taken as the last recorded data point, again relying on the training data of the LLM to continue the series and make predictions.
+
+The data provided to the simulation for this experiment was:
+* quarterly GDP growth rate,
+* quarterly unemployment rate,
+* quarterly Consumer Price Index (CPI) readings,
+* quarterly effective Federal Funds Rate set by the Federal Reserve, and
+* quarterly measurements of the securities held outright by the Federal Reserve.
+
+These series were sourced from the Federal Reserve Economic Data (FRED) database. The percent changes in quarterly CPI readings were then derived to create a series representing the quarterly inflation rate, and the percent changes in the quarterly securities held outright were derived as well.
+
+These series were then incorporated into the initial global state as the initial economic variable values and the initial central bank knobs. This means that in the initial round of the simulation, all agents had access to these data points in the series. The simulation was then run all the way until 2024Q1 in the manner described above.
+
+{numref}`evaluate-mas` shows the graphs generated for the economic variables and `CentralBank` knobs as a result of this backtesting evaluation. The data points in the red shaded region represent the data points given to the simulation initially as context, and the data points that follow show the predicted or actual readings of the respective series.
+
+```{figure} ./evaluate-mas.png
+---
+name: evaluate-mas
+---
+Generated plots of economic variables and bank knobs from Experiment 1: Backtesting Evaluation. This experiment evaluates the long-term forecasting ability of the MAS. Red-shaded points represent points given in context while points after the red shading show either the predicted data points by the simulation or the actual recorded data points.
+```
+
+### Takeaways from Experiment 1
+
+The main takeaway seen from these graphs is that the multi-agent system seems to predict general long-term trends in GDP growth rate and unemployment rate. This was actually to be expected since the data points given as context occurred prior to the COVID pandemic taking its toll on the US economy in 2020Q2. However, the fact that it predicted a relatively stable GDP growth rate around 2% and an unemployment rate of around 4%, and the data points post-COVID support these trends, means that the MAS does a good job predicting trends for these series specifically. This observation is worth further investigation in different time periods and different context windows for data points.
+
+Another interesting observation is that the MAS predicted a constant increase in the inflation rate, which did not end up happening. This linear increase in inflation rate is particularly interesting as it seems to suggest an internal belief of a constant increase in the inflation rate, which suggest further investigation in this track.
+
+As for how the Federal Reserve responded, the simulation did not do so well. This prompts the question of whether injecting actual values of preceding quarters into the simulation prior to starting the next round would improve the simulation's predictions for the target interest rate and changes in securities holdings.
+
+### Experiment 2: Perturbate Variables
+
+The purpose of this experiment was to evaluate the MAS's ability to predict evolution in macroeconomic dynamics given a perturbation in one of the variables. In an attempt to debias the simulation as much as possible, the data I provided in the initial state was randomized but within reasonable bounds representing the past 5 quarters of recorded data. The particular scenario I investigated in this experiment for this project was given a 1.0% increase in the latest reading for the target interest rate by `CentralBank`, how would the global state evolve over the next 5 quarters.
+
+Two simulation runs were conducted. One simulation run was conducted wihout the 1.0% increase in the target interest rate, and this simulation run was deemed the "control" simulation. The other simulation run was conducted with the increase in the target interest rate and was deemed the "experimental" simulation.
+
+{numref}`percolate-deltas` shows the generated graphs for the economic variables and bank knobs from experiment 2. Red-shaded points represent points given in context while points after the red shading show the predicted data points from the control or experimental simulations.
+
+```{figure} ./percolate-deltas.png
+---
+name: percolate-deltas
+---
+Generated plots of economic variables and bank knobs from Experiment 2: Perturbate. Given a 1.0% increase in the latest reading for the target interest rate, this experiment shows how the MAS updates the global state over the next 5 quarters. Red-shaded points represent points given in context while points after the red shading show the predicted data points from the control or experimental simulations. Note the circled datapoint in the Target Interest Rate graph indicating the 1.0% increase in the target interest rate.
+```
+
+The main takeaway from this experiment is that on the particular data provided, this increase in the target interest rate would cause less of a decrease in the GDP growth rate, less of an increase in the unemployment rate, and a much lower overall inflation rate. Inflation rate is predicted to stay below 2.0%, which is commonly the goal set by the Federal Reserve in the United States as a long term inflation rate. The simulation predicted that large commercial banks would attempt to attract more money into the bank for liquidity in the form of a higher deposit interest rate, which tracks with how banks set their deposit interest rate according to the target interest rate. Interestingly, the simulation predicted that the large commercial bank would lend more aggressively first and then become more conservative according to the loan to deposit ratio. The small commercial bank seems to want to attract more consumer customers with decreasing loan interest rates and generally more of a focus on lending to consumers.
 
 ## Lessons Learned
 
-While creating and running the simulations, I gained some valuable insights into the challenges and best practices of designing LLM-powered multi-agent systems (MASs). Two key lessons emerged from integrating Langroid and running simulations:
+While creating and running the simulations, I gained some valuable insights into the challenges and best practices of designing LLM-powered MASs. Two key lessons emerged from integrating Langroid and running simulations:
 
 ### Ensuring Sensible Outputs
-One major challenge was ensuring that agent outputs were not only valid but also meaningful for the simulation. For instance, the `CentralBank` agent’s percent change in securities holdings had to represent a true percentage, not an absolute value. While Langroid supports basic type assertions (e.g., `int` or `float`), more granular checks were necessary for this use case.
+One major challenge was ensuring that agent outputs were not only valid but also meaningful for the simulation. For instance, the `CentralBank` agent’s percent change in securities holdings had to represent a *percent* change, not an absolute change. While Langroid supports strong type assertions for elementary types (e.g., `int` or `float`) in Tools, more granular checks were necessary for this use case.
 
 To address this, I developed custom types like `Percent` and `NonnegPercent`, which validate percentage values during initialization. Additionally, I created a `TypedArray` class to dynamically type-check lists of elements as they were updated. These tools streamlined the type-checking process, ensuring accurate and consistent agent behavior during simulation runs.
 
-### Managing LLM Bias and Output Processing
-Another key lesson was the importance of reducing bias in LLM-generated responses and rigorously analyzing outputs. For example, I designed prompts to place the agents in a fictional country with no temporal context or direct references to real-world events. Despite these efforts, the LLM mentioned the COVID pandemic when backtesting the system, even though no such data was explicitly provided. This highlighted how specific input values could implicitly trigger unexpected associations and correlations in the model.
+### Managing LLM Bias and Analyzing Raw Outputs
+Another key lesson was the importance of reducing bias in LLM-generated responses and analyzing the raw outputs. For example, I designed prompts to place the agents in a fictional country with no temporal context or direct references to real-world events. Despite these efforts, the LLM mentioned the COVID pandemic when backtesting the system, even though no such data was explicitly provided. This highlighted how specific input values could implicitly trigger unexpected associations and correlations in an LLM, which warrants deeper study into what such associations exist and how to mitigate them.
 
-This insight underscored a critical design consideration for LLM-powered MASs: natural language outputs may not always conform to expectations and can reflect latent biases in the model. Langroid simplifies extracting structured data from LLM outputs, but additional post-processing can be necessary to ensure validity and relevance for specific use cases.
+This insight underscored a critical design consideration for LLM-powered MASs: natural language outputs may not always conform to expectations and can reflect latent biases in the model. Langroid simplifies extracting structured data from LLM outputs, but additional post-processing may be necessary to ensure validity and relevance for specific use cases.
 
-## Applications and Future Directions
 
-This project opens several avenues for applying and extending multi-agent simulations in macroeconomics. While the project primarily focused on exploring the feasibility of integrating intelligent agents with macroeconomic principles and deriving some initial insights from the system, its potential applications are broad and impactful.
+## Future Directions
 
-### Applications
+The insights gained and lessons learned from this project lead to several opportunities for future research based on the work done in *Agentomics*.
+
+1. **Adding Additional Agents and Stock Market Metrics**
+   - Future iterations of the MAS introduced here could include additional agents for asset/wealth management firms and private equity firms to include big players on the stock market and alternative markets. It could also include additions to the global state measuring the S&P 500 or a similar stock market index.
+   - From the efficient market hypothesis, the stock market incorporates a lot of information about other markets and proceedings. Incorporating the stock market into the simulation might increase the accuracy of the overall simulation.
+
+1. **Refining LLM Utilization**
+   - While the current simulation leverages LLMs effectively, exploring techniques like fine-tuning or reinforcement learning could improve decision-making accuracy.
+   - Testing additional LLMs with larger context windows and domain-specific training might resolve some current limitations, particularly information leakage and potential hardcoding of data into the LLM's training data.
+
+1. **Further Analysis of Simulation Accuracy**
+    - Using the backtesting evaluation framework, the simulation could be tested on different time periods to better test accuracy and associations for each of the variables and knobs
+    - Using the pertubate variables experiment framework, the simulation could be tested on real data and be cross-referenced to existing economic simulations done using reaction functions to evaluate whether the assumption and predictions made by the model track with economic theory.
+
+## Applications
+
+This project opens several avenues for applying and extending multi-agent simulations in macroeconomics. While the project focused on exploring the feasibility of LLM-powered MASs to economic simulations and deriving some initial insights from such a system, the potential applications for these systems are broad and impactful.
 
 1. **Economic Modeling**
-   - By simulating interactions between banks, regulators, and the broader economy, *Agentomics* offers a framework for exploring systemic risks, financial stability, and the cascading effects of economic policies.
+   - By simulating interactions between banks, regulators, and the broader economy, LLM-powered MASs offers a framework for exploring systemic risks, financial stability, and the cascading effects of economic policies.
    - Researchers can use similar simulations to test hypotheses about macroeconomic behaviors, such as the impact of interest rate changes or lending policy adjustments.
 
 2. **Educational Tools**
@@ -85,29 +156,22 @@ This project opens several avenues for applying and extending multi-agent simula
    - Policymakers can leverage MAS-based simulations to test the effects of proposed regulations in a risk-free virtual environment.
    - For example, adjustments to reserve requirements or interest rates can be studied to predict their outcomes on financial stability and market activity.
 
-### Future Directions
-
-1. **Expanding Agent Behaviors**
-   - Future iterations could include more granular agent behaviors, such as sector-specific banks or consumer agents making microeconomic decisions like spending and saving.
-   - Incorporating machine learning models for decision-making could further enhance agent realism and adaptability.
-
-2. **Integrating Real-World Data**
-   - Coupling the simulation with real-world datasets, such as historical economic indicators or financial transaction data, would provide richer insights and more accurate modeling.
-   - This integration could also allow agents to make data-driven decisions, enhancing the simulation’s relevance for policy analysis.
-
-3. **Refining LLM Utilization**
-   - While the current simulation leverages LLMs effectively, exploring advanced techniques like fine-tuning or reinforcement learning could improve decision-making accuracy.
-   - Testing additional LLM models with larger context windows and domain-specific training might resolve some current limitations, such as context loss or inconsistent responses.
-
-4. **Scalability and Complexity**
-   - Scaling the simulation to include larger numbers of agents and more intricate interactions could reveal emergent patterns that are otherwise obscured in smaller simulations.
-   - Adding features such as multi-period forecasting or stochastic elements could enhance the realism of the economic dynamics.
-
-5. **Cross-Disciplinary Applications**
-   - Beyond macroeconomics, the framework used in *Agentomics* could be adapted for other domains where complex, interdependent systems exist, such as supply chain management, urban planning, or climate modeling.
-
 ## Conclusion
 
+The *Agentomics* project represents an exploration of modeling macroeconomic systems using LLM-powered Multi-Agent Systems (MASs). By leveraging the flexibility of the Langroid framework, the goal was not only to test the feasibility of such a system but also to derive preliminary insights into macroeconomic behaviors.
+
+The experiments conducted revealed valuable takeaways:
+- **Experiment 1 (Backtesting Evaluation)** showed the system’s strength in predicting long-term trends for GDP growth and unemployment rates, despite limitations in capturing certain variables like inflation or central bank responses. These insights underscore the potential of LLM-powered MASs in trend forecasting while identifying areas for refinement.
+- **Experiment 2 (Perturbate Variables)** demonstrated the system’s capability to simulate the ripple effects of policy changes, such as a 1.0% increase in the target interest rate, on macroeconomic variables. The experiment highlighted nuanced agent behaviors, such as adjustments in lending practices and interest rates.
+
+Key lessons emerged from this project, including the importance of ensuring sensible outputs, managing LLM biases, and analyzing raw outputs to better understand latent associations in LLMs. The project also revealed the technical challenges and opportunities of designing robust and meaningful simulations, such as using custom types to validate agent outputs and creating scenarios free from explicit real-world context to minimize bias.
+
+Looking ahead, several future directions and applications extend the potential of *Agentomics*:
+- Refining the MAS with additional agents and metrics, such as stock market indicators, can enhance its comprehensiveness and accuracy.
+- Exploring advanced LLM utilization techniques like fine-tuning and reinforcement learning can improve decision-making capabilities.
+- Further testing the system using backtesting and perturbation frameworks across different time periods and datasets can provide deeper insights and validate its consistency with economic theories.
+
+Beyond research, this project opens avenues in education, policy prototyping, and economic modeling, offering an interactive tool for understanding complex systems and predicting policy outcomes.
 
 
 ## References
