@@ -4,7 +4,7 @@ env:
 	@echo "Setting up environment with uv..."
 	uv venv
 	uv sync --extra dev --extra test
-	pre-commit install
+	uv run pre-commit install
 	uv run pre-commit run --all-files
 	@echo "Done!"
 
